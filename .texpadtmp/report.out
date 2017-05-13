@@ -1,0 +1,41 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Visible Light Communication}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Optical Communication}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{RONJA}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Li-Fi}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.4}{Standard and specifications}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.5}{Comparison with other technologies}{section.2}% 7
+\BOOKMARK [1][-]{section.3}{System Overview}{}% 8
+\BOOKMARK [2][-]{subsection.3.1}{Experimental setup}{section.3}% 9
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Transmitter}{subsection.3.1}% 10
+\BOOKMARK [3][-]{subsubsection.3.1.2}{Receiver}{subsection.3.1}% 11
+\BOOKMARK [2][-]{subsection.3.2}{List of components}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.3}{Wiring}{section.3}% 13
+\BOOKMARK [1][-]{section.4}{Physical layer}{}% 14
+\BOOKMARK [2][-]{subsection.4.1}{Warmup time}{section.4}% 15
+\BOOKMARK [2][-]{subsection.4.2}{Interference from ambient light}{section.4}% 16
+\BOOKMARK [2][-]{subsection.4.3}{Distance}{section.4}% 17
+\BOOKMARK [2][-]{subsection.4.4}{Angle}{section.4}% 18
+\BOOKMARK [2][-]{subsection.4.5}{Powerful lights and power source}{section.4}% 19
+\BOOKMARK [1][-]{section.5}{Control layer}{}% 20
+\BOOKMARK [2][-]{subsection.5.1}{Connection to the logical layer}{section.5}% 21
+\BOOKMARK [2][-]{subsection.5.2}{Reception rates}{section.5}% 22
+\BOOKMARK [2][-]{subsection.5.3}{Transmission rates}{section.5}% 23
+\BOOKMARK [2][-]{subsection.5.4}{Experiments and Results for Transmission Rate}{section.5}% 24
+\BOOKMARK [2][-]{subsection.5.5}{Distance}{section.5}% 25
+\BOOKMARK [2][-]{subsection.5.6}{Controlling AC powered lights}{section.5}% 26
+\BOOKMARK [1][-]{section.6}{Logical layer}{}% 27
+\BOOKMARK [2][-]{subsection.6.1}{Reading the signal}{section.6}% 28
+\BOOKMARK [3][-]{subsubsection.6.1.1}{Machine Learning approach}{subsection.6.1}% 29
+\BOOKMARK [3][-]{subsubsection.6.1.2}{Custom algorithm approach}{subsection.6.1}% 30
+\BOOKMARK [2][-]{subsection.6.2}{Protocol}{section.6}% 31
+\BOOKMARK [3][-]{subsubsection.6.2.1}{Additional fields}{subsection.6.2}% 32
+\BOOKMARK [2][-]{subsection.6.3}{Results}{section.6}% 33
+\BOOKMARK [3][-]{subsubsection.6.3.1}{Experimental setup}{subsection.6.3}% 34
+\BOOKMARK [1][-]{section.7}{Evaluation and Results}{}% 35
+\BOOKMARK [2][-]{subsection.7.1}{Experimental setup}{section.7}% 36
+\BOOKMARK [2][-]{subsection.7.2}{Experiments}{section.7}% 37
+\BOOKMARK [2][-]{subsection.7.3}{Performance}{section.7}% 38
+\BOOKMARK [2][-]{subsection.7.4}{Discussion}{section.7}% 39
+\BOOKMARK [1][-]{section.8}{Discussion}{}% 40
+\BOOKMARK [1][-]{section.9}{Conclusion}{}% 41
