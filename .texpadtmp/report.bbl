@@ -21,6 +21,12 @@ IEEE~Standards Association.
 \newblock Ieee 802.15 wpan task group 7 (tg7) visible light communication.
 \newblock \url{http://www.ieee802.org/15/pub/TG7.html}.
 
+\bibitem{distrcoord}
+Nolfi~S. Baldassarre~G., Parisi~D.
+\newblock Distributed coordination of simulated robots based on
+  self-organisation.
+\newblock {\em Artificial Life}, 12(3):289--311, Summer 2006.
+
 \bibitem{crisis}
 US~Federal~Communication Commission.
 \newblock \url{https://www.fcc.gov/general/spectrum-crunch}.
@@ -38,6 +44,11 @@ US~Federal~Communication Commission.
 \newblock 3.4 gbit/s visible optical wireless transmission based on rgb led.
 \newblock {\em Optics Express 20, B501–B506}, 2012.
 
+\bibitem{assemblysbots}
+R.~Gro{\ss}, M.~Bonani, F.~Mondada, and M.~Dorigo.
+\newblock Autonomous self-assembly in swarm-bots.
+\newblock {\em {IEEE} Transactions on Robotics}, 22(6):1115--1130, 2006.
+
 \bibitem{tedtalk}
 Harald Haas.
 \newblock Ted talk online by harald haas on wireless data from every light
@@ -50,15 +61,36 @@ Harald Haas.
 \newblock High-speed wireless networking using visible light.
 \newblock 2013.
 
+\bibitem{embodiedevolution}
+Evert Haasdijk, Nicolas Bredeche, and A.~E. Eiben.
+\newblock Combining environment-driven adaptation and task-driven optimisation
+  in evolutionary robotics.
+\newblock {\em PLOS ONE}, 9(6):1--14, 06 2014.
+
 \bibitem{500Mbps}
 {S. Nerreter} {K. D. Langer}~{J. W. Walewski} {J. Vucic}, {C. Kottke}.
 \newblock 513 mbit/s visible light communications link based on dmt modulation
   of a white led.
 \newblock {\em J. Lightwave Technol. 28 (24), pp. 3512–3518}, 2010.
 
+\bibitem{architecturesswarm}
+{D. Rus.} {N. Correll}.
+\newblock Architectures and control of networked robotic systems.
+\newblock {\em Handbook of Collective Robotics, pp. 81-104}, 2013.
+
+\bibitem{pathformation}
+S.~Nouyan and M.~Dorigo.
+\newblock Chain based path formation in swarms of robots.
+\newblock volume 4150, pages 120--131. 2006.
+
 \bibitem{poveyspec}
 Gordon Povey.
 \newblock
   \url{http://visiblelightcomm.com/an-ieee-standard-for-visible-light-communications/}.
+
+\bibitem{holeavoidance}
+V.~Trianni, S.~Nolfi, and M.~Dorigo.
+\newblock Cooperative hole avoidance in a {\em swarm-bot}.
+\newblock {\em Robotics and Autonomous Systems}, 54(2):97--103, 2006.
 
 \end{thebibliography}

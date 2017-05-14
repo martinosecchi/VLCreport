@@ -1,41 +1,42 @@
 \contentsline {section}{\numberline {1}Introduction}{1}{section.1}
-\contentsline {section}{\numberline {2}Visible Light Communication}{1}{section.2}
-\contentsline {subsection}{\numberline {2.1}Optical Communication}{1}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}RONJA}{2}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}Li-Fi}{2}{subsection.2.3}
-\contentsline {subsection}{\numberline {2.4}Standard and specifications}{3}{subsection.2.4}
-\contentsline {subsection}{\numberline {2.5}Comparison with other technologies}{4}{subsection.2.5}
-\contentsline {section}{\numberline {3}System Overview}{4}{section.3}
-\contentsline {subsection}{\numberline {3.1}Experimental setup}{5}{subsection.3.1}
-\contentsline {subsubsection}{\numberline {3.1.1}Transmitter}{5}{subsubsection.3.1.1}
-\contentsline {subsubsection}{\numberline {3.1.2}Receiver}{6}{subsubsection.3.1.2}
-\contentsline {subsection}{\numberline {3.2}List of components}{6}{subsection.3.2}
+\contentsline {section}{\numberline {2}Visible Light Communication}{2}{section.2}
+\contentsline {subsection}{\numberline {2.1}Indoor positioning}{3}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Optical Communication}{3}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}RONJA}{3}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Li-Fi}{3}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.5}Standard and specifications}{4}{subsection.2.5}
+\contentsline {subsection}{\numberline {2.6}Comparison with other technologies}{5}{subsection.2.6}
+\contentsline {section}{\numberline {3}System Overview}{5}{section.3}
+\contentsline {subsection}{\numberline {3.1}Experimental setup}{6}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}Transmitter}{7}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.2}Receiver}{7}{subsubsection.3.1.2}
+\contentsline {subsection}{\numberline {3.2}List of components}{7}{subsection.3.2}
 \contentsline {subsection}{\numberline {3.3}Wiring}{7}{subsection.3.3}
-\contentsline {section}{\numberline {4}Physical layer}{7}{section.4}
-\contentsline {subsection}{\numberline {4.1}Warmup time}{7}{subsection.4.1}
+\contentsline {section}{\numberline {4}Physical layer}{8}{section.4}
+\contentsline {subsection}{\numberline {4.1}Warmup time}{8}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}Interference from ambient light}{8}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Distance}{8}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}Angle}{9}{subsection.4.4}
-\contentsline {subsection}{\numberline {4.5}Powerful lights and power source}{10}{subsection.4.5}
-\contentsline {section}{\numberline {5}Control layer}{10}{section.5}
-\contentsline {subsection}{\numberline {5.1}Connection to the logical layer}{11}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Reception rates}{11}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}Transmission rates}{12}{subsection.5.3}
-\contentsline {subsection}{\numberline {5.4}Experiments and Results for Transmission Rate}{12}{subsection.5.4}
-\contentsline {subsection}{\numberline {5.5}Distance}{13}{subsection.5.5}
-\contentsline {subsection}{\numberline {5.6}Controlling AC powered lights}{14}{subsection.5.6}
+\contentsline {subsection}{\numberline {4.3}Distance}{9}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Angle}{10}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}Powerful lights and power source}{11}{subsection.4.5}
+\contentsline {section}{\numberline {5}Control layer}{12}{section.5}
+\contentsline {subsection}{\numberline {5.1}Connection to the logical layer}{12}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Reception rates}{12}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Transmission rates}{13}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}Experiments and Results for Transmission Rate}{13}{subsection.5.4}
+\contentsline {subsection}{\numberline {5.5}Distance}{14}{subsection.5.5}
+\contentsline {subsection}{\numberline {5.6}Controlling AC powered lights}{15}{subsection.5.6}
 \contentsline {section}{\numberline {6}Logical layer}{15}{section.6}
-\contentsline {subsection}{\numberline {6.1}Reading the signal}{15}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.1}Reading the signal}{16}{subsection.6.1}
 \contentsline {subsubsection}{\numberline {6.1.1}Machine Learning approach}{16}{subsubsection.6.1.1}
-\contentsline {subsubsection}{\numberline {6.1.2}Custom algorithm approach}{16}{subsubsection.6.1.2}
+\contentsline {subsubsection}{\numberline {6.1.2}Custom algorithm approach}{17}{subsubsection.6.1.2}
 \contentsline {subsection}{\numberline {6.2}Protocol}{17}{subsection.6.2}
-\contentsline {subsubsection}{\numberline {6.2.1}Additional fields}{17}{subsubsection.6.2.1}
-\contentsline {subsection}{\numberline {6.3}Results}{17}{subsection.6.3}
-\contentsline {subsubsection}{\numberline {6.3.1}Experimental setup}{17}{subsubsection.6.3.1}
-\contentsline {section}{\numberline {7}Evaluation and Results}{18}{section.7}
-\contentsline {subsection}{\numberline {7.1}Experimental setup}{20}{subsection.7.1}
-\contentsline {subsection}{\numberline {7.2}Experiments}{20}{subsection.7.2}
-\contentsline {subsection}{\numberline {7.3}Performance}{20}{subsection.7.3}
-\contentsline {subsection}{\numberline {7.4}Discussion}{20}{subsection.7.4}
-\contentsline {section}{\numberline {8}Discussion}{20}{section.8}
-\contentsline {section}{\numberline {9}Conclusion}{20}{section.9}
+\contentsline {subsubsection}{\numberline {6.2.1}Additional fields}{18}{subsubsection.6.2.1}
+\contentsline {subsection}{\numberline {6.3}Results}{18}{subsection.6.3}
+\contentsline {subsubsection}{\numberline {6.3.1}Experimental setup}{19}{subsubsection.6.3.1}
+\contentsline {section}{\numberline {7}Evaluation and Results}{19}{section.7}
+\contentsline {subsection}{\numberline {7.1}Experimental setup}{19}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Experiments}{19}{subsection.7.2}
+\contentsline {subsection}{\numberline {7.3}Performance}{19}{subsection.7.3}
+\contentsline {subsection}{\numberline {7.4}Discussion}{19}{subsection.7.4}
+\contentsline {section}{\numberline {8}Discussion}{19}{section.8}
+\contentsline {section}{\numberline {9}Conclusion}{19}{section.9}
