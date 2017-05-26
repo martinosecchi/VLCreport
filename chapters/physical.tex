@@ -1,19 +1,19 @@
 \section{Physical layer}
 \label{physical}
 
-\todo{what requirements do I need to meet here?}
-
-This layer is about physical properties of the hardware and the signal itself.\\
+This layer is about physical properties of the hardware and the signal itself.
 In this section these properties will be analysed through the aid of various experiments performed on the prototype system.
 %motivation
 This is a first step in understanding the potential and the limitations of a system, because whatever limitation derives from the physical layer, it will be a hard limitation that will affect the entire system.
 Therefore, starting to look at physical constraints of the system will give a good overview of what can be achieved and what cannot early on, before the rest of the designing process.
+The end goal of the system will be to achieve communicatoin rates above 65 Hz, and allowing a receiver to localise the light source.
+To allow this, the physical layer of the system needs to allow a light to turn on in less than 15 ms, and the light to be visible within a range.
 % experimental setup
 All the following experiments will be performed on the prototype system as described in section \ref{expsetup}, with the use of the low power 10mm LED unless otherwise stated.
 %why brigthness in %
 A remark on the experiments that will follow is that brightness will be always reported in percentage.
-This serves the purpose of making the data applicable in general cases, even with different light sources.
-The LED used for testing produces a luminous intensity of about 8 000 to 10 000 MCD at 25$^{\circ}$ \cite{ledDS}.
+This serves the purpose of making the data applicable in general cases, even with different light sources and different sensors.
+The LED used for testing produces a luminous intensity of about 8 000 to 10 000 MCD at 25$^{\circ}$ Celsius \cite{ledDS}.
 
 %warmup
 \subsection{Warmup time}
@@ -27,13 +27,26 @@ The LED used for testing produces a luminous intensity of about 8 000 to 10 000 
 \label{fig:warmup}
 \end{figure}
 
+\begin{figure}[hbt]
+\centering
+  \includegraphics[height=140px]{img/regrU}
+    \includegraphics[height=140px]{img/regrD}
+  \caption{Regression functions based on the samples.}
+  \label{fig:regr}
+\end{figure}
+
+
 The speed of light transmission depends in primis on the speed at which the light itself can be turned on and off.
-Figure \ref{fig:warmup} shows the warmup times for the low power LED over multiple instances, meaning the time that it takes for turning the light completely on from completely off, and vice versa.
+Figure \ref{fig:warmup} shows the warmup and cool down times for the low power LED over multiple instances, meaning the time that it takes for turning the light completely on from completely off, and vice versa.
 These measurements depend on the reception rate of the system, which will be discussed in section \ref{recrates}.
-Table \ref{tab:warmup} shows the times for the LED to switch between specific brightness levels.
+A polynomial regression of 9th grade has been applied to the values in order to approximate the intermediate stages between the sample interval as well.
+Fig. \ref{fig:regr} shows the regression functions and the sample points from which they originates, for one of the measurements.
+For each curve, 10 measurements have been performed and approximated.
+Table \ref{tab:warmup} shows the times for the LED to switch between specific brightness levels, as an average of every measurement.
 Each row represents the time to reach the level on each column, for example the first row represents the time to reach any brightness level starting from 0\% brightness.
-The table works both ways, meaning it shows the time for the warmup as well as the time for the cool down of the LED.
-As another example, the last row shows how long it takes to reach any level from a completely ON state, meaning starting from 100\% of brightness.
+The table works both ways, in the sense that it shows the time for the warmup as well as the time for the cool down of the LED.
+Warmup times are to the right side of the diagonal, while cool down times are on the left side.
+The last row shows how long it takes to reach any level from a completely ON state, meaning starting from 100\% of brightness.
 
 \begin{table}[hbt]
 \centering
@@ -58,7 +71,7 @@ As another example, the last row shows how long it takes to reach any level from
 \end{table}
 
 From the table as well as from fig. \ref{fig:warmup}, it can be seen that the LED is slightly faster at being turned on rather than off.
-Also pretty indicative is the fact that about 90\% of the time used for turning a LED completely on or completely off, is spent to make a variation in the last 20\% of brightness levels, which means that a LED can reach a reasonably high brightness in a time relatively small compared to its full potential.
+Also pretty indicative is the fact that about 90\% of the time used for turning a LED completely on or completely off, is spent to make a variation in the last 20\% of brightness levels, which means that a LED can reach a reasonably high brightness in a time relatively small compared to the full state change.
 Interesting for later sections is that 50\% of the brightness can be reached in about 2 ms.
 
 %distance
@@ -68,7 +81,7 @@ Another factor that might affect the communication over light is the distance be
 Intuitively, brighter lights will be visible from farther.
 A low power LED cannot reach high levels of brightness, therefore it won't be visible at long distances.
 Table \ref{tab:distancesphy} shows the results of different measurements taken at increasing distances sensor to light source.
-Two different light sources has been tested, the low power (5V) LED and a commercial LED bulb powered by mains electricity (240V).
+Two different light sources have been tested, the low power (5V) LED and a commercial LED bulb powered by mains electricity (240V).
 The reference for maximum brightness is achieved with a distance of 0 cm between receiver and light source, with the two nearly touching, represented as a 100\% of brightness.
 Figure \ref{fig:distancephy} shows the measurements of the same experiments in a graphical manner, only for the low power LED.
 In the figure, each colour represents a different distance, and each peak a different experiment.
@@ -102,33 +115,33 @@ The experiment was performed in a dark environment, minimising interference from
 From the table and figure it can be seen that the maximum brightness registered from the sensor drops decidedly with increasing distance.
 This obviously makes reliable communication over long distances harder.
 The comparison between the two light sources clarifies the role of brightness in achieving certain distances.
-The LED bulb has registered a brightness 5 to 6 times more intense than the low power LED, and clearly is able to reach longer distances.
-The bulb has a wider viewing angle of $120^{\circ}$, compared to the $30^{\circ}$ of the low power LED, and can seemingly reach about 4 times more transmission range.\\
-Another important implication with this results is the role of noise in the reception.
+The LED bulb has registered a brightness 5 to 6 times more intense than the low power LED, has a wider viewing angle and clearly is able to reach longer distances, about 4 times more than the single LED.\\
+Another important implication with this results is the role of noise in the reception, both instrumental and environmental.
+In the figure, noise can be graphically implied as the thickness of the lines.
 Noise doesn't scale with the communication, meaning that if the maximum brightness perceived at a certain distance is 50\% of the brightness at 0 distance, the noise in this first case is not 50\% of the one used for reference, but stays constant.
 This means that the lower the variation perceived, the more noise will play a role in the communication.
 A remark on the experiments performed is that both lights used for testing are directional, with an optimal viewing angle of about 30$^{\circ}$ from the centre of the emitter for the LED and 120$^{\circ}$ for the bulb. 
-The receiver, at the different distances, was always placed in the optimal viewing point in relation to the light emitter direction.
+The receiver, at the different distances, was always placed in the optimal viewing point in relation to the light direction.
 
 
 %ambient
 \subsection{Interference from ambient light}
 Previous data about times to reach maximum brightness were measured in a condition of full darkness of the environment surrounding the light source, at minimal distance between transmitter and receiver.
-But visible light communication is not necessarily used with this restriction, it is in fact meant to be used over an open space, wirelessly,  meaning that interference from natural light or other light sources is very likely.
+But visible light communication is not necessarily used with this restrictions, it is in fact meant to be used over an open space, wirelessly,  meaning that interference from natural light or other light sources is very likely.
  Experiments have been performed to quantify the influence of ambient light on potential transmission.
  This is done by comparing the difference between the brightness measured by the sensor when the transmitter is turned on and the one when the transmitter is turned off.
  This represents the maximum potential amplitude of a signal.
  This difference will be measured without ambient light interference and used as a reference for the measurements that occur with ambient light interference.
- Since communication  will later rely on the quantification of light variations, it's important to establish if this variations will be substantially different with or without interference present.
+ Since communication  will later rely on the quantification of light variations, it's important to establish if these variations will be substantially different with or without interference present.
  For these experiments, for ambient light it is meant light from any source that is not directed to the receiver but naturally permeates the environment surrounding the system.
  If the variation ON/OFF in a fully dark environment is represented as 100\%, the experiment shows that this difference is between 100\% and 120\% when ambient light is present, averaging at around 110\%. 
-Measurements were taken at 0 distance and with direct exposure.
+These measurements were taken at 0 distance and with direct exposure.
 This increase could be explained with a higher sensibility of the sensor when exposed to higher levels of base brightness.
 This suggests that ambient light interference doesn't affect transmission quality, at least in optimal conditions, with limited ambient light with no direct source pointing at the sensor and without accounting for distance.
 Introducing distance as a parameter though, it appears that light intensity decreases faster over distance when in presence of other light sources.
 Table \ref{tab:distancesphyINT} shows the results of testing the maximum brightness received over different distances, with presence of natural light.
 The source of the ambient light does not face the sensor directly for these measurements.
-The table also compare the results of the same tests performed in a completely dark environment.
+The table also compares the results of the same tests performed in a completely dark environment.
 Figure \ref{fig:distanchephyINT} shows the same results graphically.
 
 \begin{table}[hbt]
@@ -197,7 +210,7 @@ Light sources that are brighter can be perceived at longer distances, and are le
 Such lights have a higher power consumption than less performant ones.
 If the vision is to have a smart environment with lights that serve the double purpose of lighting the environment for humans and transmit information to devices, the most natural thing would be to connect these lights to mains electricity like any other lamp.
 This power source potentially allows the usage of much more powerful light bulbs then the low power LED used in the prototype.
-In Europe, electric power supply for mains is of 230 V at a frequency of 50 Hz \todo{reference mains information.}.
+In Europe, electric power supply for mains is of 230 V at a frequency of 50 Hz.
 A distinctive trait of this power source is that it uses Alternating Current (AC).
 Alternating current periodically reverses direction whereas direct current (DC) always flows in the same direction.
 AC voltage can be expressed by a sinusoidal function, which means the current will vary its intensity in time.
@@ -205,7 +218,7 @@ Current will be higher near the peak, and lower near the time of the periodic sw
 This behaviour is clearly represented in figure \ref{fig:warmupAC}, when the light is ON after the warmup in the figure on the left, or before the cool down in the figure on the right.
 The ON/OFF difference when measuring the light intensity with the receiver is over 500\% bigger than the LED of the prototype system, with similar rise speeds.
 However, the fluctuations of AC during the ON state make it harder to use it for communication using On Off Keying, since that modulation scheme relies on variations in intensity.
-A way around this would be to convert AC to DC with a process called rectification \todo{reference rectification}.
+A way around this would be to convert AC to DC with a process called rectification.
 This involves the use of a capacitor connected between AC V$^{+}$ and Ground,  which lowers the amplitude of the AC significantly thus producing something very similar to DC.
 Another problem to face however, as shown in the picture, is that these LED bulbs have a much slower fall time when switched off, which also would affect the switching frequency during transmission.
 

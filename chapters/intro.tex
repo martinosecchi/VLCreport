@@ -20,15 +20,15 @@ This allows to transmit a message that includes additional information embedded 
 In particular, information relative to localisation and direction can just be derived from the light source's position, instead of it being encoded in the message.
 This is in general harder to achieve with many other technologies, like WiFi or Bluetooth, that can only give a sense of directionless proximity to the source, at least without employing techniques like triangulation or fingerprinting or sharing a common reference system.
 With situated communication, the properties of the transmission can enrich the information to be received, that will be more than just the content of the message.
-Very much like human hearing, messages like "I'm here" or "come here" can be fully understood and acted upon when the source of the message can be clearly located.
+Very much like human hearing or sight, messages like "I'm here" or "come here" can be fully understood and acted upon when the source of the message can be clearly located.
 \newline
 %swarm robotics
 This characteristic has been proven very useful in the field of mobile robotics, and in particular in \textbf{swarm robotics}.
+Mobile robots are by definition able to move in space, and are therefore potentially capable of exploiting the information about direction and relative position of the source of a message.
 Swarm robotics is the study and application of a control paradigm used in multi-robot systems, in which usually large amounts of robots interact with each other to form a collective behaviour with the ultimate goal of performing a task.
 The strong point of swarm robotics is that relatively simple agents can produce fairly complex swarm behaviours, exploiting constant feedback and communication between the agents.
 This research field originates from the observation of emergent behaviour exhibited by social organisms, examples of which can be insects like ants and termites, birds, fish, quadrupeds and bacteria.
-This kind of systems rely intrinsically on local communication and mutual localisation between the agents 
-\cite{architecturesswarm}.
+This kind of systems rely intrinsically on local communication and mutual localisation between the agents \cite{architecturesswarm}.
 A communication method that allows both would therefore allow greater simplicity in the design of such systems.
 \newline
 Visible light communication has been applied to swarm robotics in numerous occasions, most notably in the Swarm-bots and Swarmanoid projects funded by the European Commission in 2002 and 2006.
@@ -38,11 +38,11 @@ This functionality can be used to achieve dynamic shape formation of self assemb
 \newline
 %motivation
 These examples, like many others, use a rather reactive approach to obtain and communicate information.
-In a colour based system like the before mentioned one, agents simply react to certain colours in predefined ways, like they would do for any other sensory information when the behaviour is programmed.
-It is the same with other kinds of information like the ones coming from proximity sensors or thermometers, accelerometers, gyroscopes and so on.
+In a colour based system like the before mentioned one, agents simply react to certain colours in predefined ways, like they would do with any other sensory information when the behaviour is programmed.
+The same responses could be implemented for other kinds of information, like ones coming from proximity sensors or thermometers, accelerometers, gyroscopes and so on.
 There are circumstances however where this kind of reactive approach is not enough, and more complex information need to be passed from one agent to another.
-A generic kind of communication that still achieves to be local and allows agents to localise each other could benefit greatly the field of swarm robotics.
-Another example could be embodied evolutionary robotics, where agents of a system need to communicate information necessary for reconfiguration of hardware or behaviour, in order to adapt to previously unknown or dynamically changing conditions autonomously \cite{embodiedevolution}.
+A form of generic communication that still achieves to be local and allows agents to localise each other could contribute greatly to the field of swarm robotics.
+Another potential beneficiary could be the field of embodied evolutionary robotics, where agents of a system need to communicate information necessary for reconfiguration of hardware or behaviour, in order to adapt to previously unknown or dynamically changing conditions autonomously \cite{embodiedevolution}.
 This kind of complex information could be passed through a generic purpose communication system that allows any kind of message to be sent and received, while still maintaining the advantages of a situated medium of transmission.
 %applications
 Such a technology could be used in both very simple or more advanced forms, the simplest of which would be mono directional, environment to robot communication.
@@ -54,5 +54,10 @@ The technology could also be used in a slightly more complex scenario of robot-t
 The design of a prototype system will help analyse the properties of a generic VLC system, its performances and results in the given applicative scenario of mobile robotics.
 The design process will be focused on simplicity and inexpensiveness where possible, by using mostly off-the-shelf and easily obtainable hardware components to achieve sufficient performance within reasonable cost and computational power.
 This prototype system will be tested and evaluated both as a general communication system and as a system to be specifically used for mobile robotics.
+%requirements
+The system will be considered sufficiently performant if it can allow generic messages to be received correctly within a spatial range, and if the source of communication can be localised by the receiver.
+The ideal rate of transmission would be any rate that is not noticeable by the human eye and doesn't disturb human observers, while still being registered by specialised sensors.
+Research suggests that this rate, known in the field as the critical flicker fusion rate, is close to 65 Hz for spatially uniform light sources, but can reach up to 500 Hz when the light source contains a spatial high frequency edge \cite{eye}.
+Normal light emitting diodes will be considered uniform light sources.
 
-\todo{requirements, sneak peek in the results, human eye can see up to 1000 Hz more or less}
+\todo{sneak peek in the results?}

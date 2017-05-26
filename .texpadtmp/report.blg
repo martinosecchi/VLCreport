@@ -61,6 +61,7 @@ Too many commas in name 1 of "{A.M. Khalid}, {G. Cossu}, {R. Corsini}, {P. Choud
 while executing---line 1090 of file plain.bst
 Too many commas in name 1 of "{A.M. Khalid}, {G. Cossu}, {R. Corsini}, {P. Choudhury}, {E. Ciaramella}" for entry 1Gbps
 while executing---line 1090 of file plain.bst
+Warning--there's a number but no volume in bell1880apparatus
 Too many commas in name 1 of "{Chakkor Saad}, {El Ahmadi Cheikh}, {Baghouri Mostafa}, {Hajraoui Abderrahmane}" for entry comparison
 while executing---line 1090 of file plain.bst
 Warning--empty journal in comparison
@@ -108,45 +109,45 @@ Warning--empty booktitle in pathformation
 Warning--empty publisher in pathformation
 Warning--empty year in philps
 Warning--empty year in poveyspec
-You've used 29 entries,
+You've used 31 entries,
             2118 wiz_defined-function locations,
-            642 strings with 8683 characters,
-and the built_in function-call counts, 7103 in all, are:
-= -- 695
-> -- 236
+            657 strings with 8945 characters,
+and the built_in function-call counts, 7722 in all, are:
+= -- 755
+> -- 261
 < -- 5
-+ -- 102
-- -- 70
-* -- 363
-:= -- 1251
-add.period$ -- 86
-call.type$ -- 29
-change.case$ -- 122
++ -- 112
+- -- 78
+* -- 412
+:= -- 1357
+add.period$ -- 92
+call.type$ -- 31
+change.case$ -- 132
 chr.to.int$ -- 0
-cite$ -- 44
-duplicate$ -- 335
-empty$ -- 588
-format.name$ -- 70
-if$ -- 1468
+cite$ -- 47
+duplicate$ -- 357
+empty$ -- 639
+format.name$ -- 78
+if$ -- 1595
 int.to.chr$ -- 0
-int.to.str$ -- 29
-missing$ -- 29
-newline$ -- 146
-num.names$ -- 58
-pop$ -- 145
+int.to.str$ -- 31
+missing$ -- 31
+newline$ -- 156
+num.names$ -- 62
+pop$ -- 152
 preamble$ -- 1
-purify$ -- 93
+purify$ -- 101
 quote$ -- 0
-skip$ -- 242
+skip$ -- 254
 stack$ -- 0
-substring$ -- 318
-swap$ -- 55
+substring$ -- 364
+swap$ -- 57
 text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 116
-warning$ -- 15
-while$ -- 71
-width$ -- 31
-write$ -- 285
+type$ -- 124
+warning$ -- 16
+while$ -- 77
+width$ -- 33
+write$ -- 307
 (There were 38 error messages)

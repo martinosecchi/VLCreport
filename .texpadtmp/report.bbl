@@ -36,6 +36,11 @@ Nolfi~S. Baldassarre~G., Parisi~D.
   self-organisation.
 \newblock {\em Artificial Life}, 12(3):289--311, Summer 2006.
 
+\bibitem{bell1880apparatus}
+Alexander~Graham Bell.
+\newblock Apparatus for signaling and communicating, called photophone.
+\newblock {\em US patent}, (235):199, 1880.
+
 \bibitem{comparison}
 {Baghouri Mostafa}~{Hajraoui Abderrahmane} {Chakkor Saad}, {El Ahmadi Cheikh}.
 \newblock Comparative performance analysis of wireless communication protocols
@@ -59,6 +64,11 @@ US~Federal~Communication Commission.
 \newblock A 3-gb/s single-led ofdm-based wireless vlc link using a gallium
   nitride led.
 \newblock {\em Photonics Technology Letter 99(99)}, 2014.
+
+\bibitem{eye}
+James Davis, Yi-Hsuan Hsieh, and Hung-Chi Lee.
+\newblock Humans perceive flicker artifacts at 500 hz.
+\newblock {\em Scientific Reports}, 5:7861 EP --, 02 2015.
 
 \bibitem{thymio}
 {ECAL} {EPFL}.

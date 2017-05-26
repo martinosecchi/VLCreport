@@ -3,49 +3,49 @@
 \contentsline {subsection}{\numberline {2.1}Optical Communication}{4}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}Indoor positioning}{5}{subsection.2.2}
 \contentsline {subsection}{\numberline {2.3}RONJA}{5}{subsection.2.3}
-\contentsline {subsection}{\numberline {2.4}Li-Fi}{5}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.4}Li-Fi}{6}{subsection.2.4}
 \contentsline {subsection}{\numberline {2.5}Standard and specifications}{6}{subsection.2.5}
 \contentsline {subsection}{\numberline {2.6}Comparison with other technologies}{8}{subsection.2.6}
 \contentsline {section}{\numberline {3}System Overview}{8}{section.3}
-\contentsline {subsection}{\numberline {3.1}Experimental setup}{10}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.1}Experimental setup}{9}{subsection.3.1}
 \contentsline {subsubsection}{\numberline {3.1.1}Transmitter}{10}{subsubsection.3.1.1}
 \contentsline {subsubsection}{\numberline {3.1.2}Receiver}{11}{subsubsection.3.1.2}
-\contentsline {subsection}{\numberline {3.2}List of components}{11}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.2}List of components}{12}{subsection.3.2}
 \contentsline {subsection}{\numberline {3.3}Wiring}{12}{subsection.3.3}
-\contentsline {section}{\numberline {4}Physical layer}{12}{section.4}
+\contentsline {section}{\numberline {4}Physical layer}{13}{section.4}
 \contentsline {subsection}{\numberline {4.1}Warmup time}{13}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Distance}{13}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Interference from ambient light}{15}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}Angle}{16}{subsection.4.4}
-\contentsline {subsection}{\numberline {4.5}Powerful lights and power source}{17}{subsection.4.5}
+\contentsline {subsection}{\numberline {4.2}Distance}{15}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Interference from ambient light}{16}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Angle}{17}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}Powerful lights and power source}{18}{subsection.4.5}
 \contentsline {section}{\numberline {5}Control layer}{19}{section.5}
-\contentsline {subsection}{\numberline {5.1}Connection to the logical layer}{19}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Reception rates}{20}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}Transmission rates}{21}{subsection.5.3}
-\contentsline {subsection}{\numberline {5.4}Experiments and Results for Transmission Rate}{21}{subsection.5.4}
-\contentsline {subsection}{\numberline {5.5}Distance}{22}{subsection.5.5}
-\contentsline {subsection}{\numberline {5.6}Controlling AC powered lights}{24}{subsection.5.6}
+\contentsline {subsection}{\numberline {5.1}Connection to the logical layer}{20}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Reception rates}{21}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Transmission rates}{22}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}Experiments and Results for Transmission Rate}{22}{subsection.5.4}
+\contentsline {subsection}{\numberline {5.5}Distance}{23}{subsection.5.5}
+\contentsline {subsection}{\numberline {5.6}Controlling AC powered lights}{25}{subsection.5.6}
 \contentsline {section}{\numberline {6}Logical layer}{26}{section.6}
-\contentsline {subsection}{\numberline {6.1}Reading the signal}{26}{subsection.6.1}
-\contentsline {subsubsection}{\numberline {6.1.1}Machine Learning approach}{27}{subsubsection.6.1.1}
-\contentsline {subsubsection}{\numberline {6.1.2}Custom algorithm approach}{28}{subsubsection.6.1.2}
-\contentsline {subsection}{\numberline {6.2}Protocol}{29}{subsection.6.2}
-\contentsline {subsubsection}{\numberline {6.2.1}Additional fields}{29}{subsubsection.6.2.1}
-\contentsline {subsection}{\numberline {6.3}Result}{30}{subsection.6.3}
-\contentsline {subsubsection}{\numberline {6.3.1}Experimental evaluation}{31}{subsubsection.6.3.1}
-\contentsline {section}{\numberline {7}Evaluation and Results}{32}{section.7}
-\contentsline {subsection}{\numberline {7.1}Experimental setup}{32}{subsection.7.1}
-\contentsline {subsubsection}{\numberline {7.1.1}List of components}{32}{subsubsection.7.1.1}
+\contentsline {subsection}{\numberline {6.1}Reading the signal}{27}{subsection.6.1}
+\contentsline {subsubsection}{\numberline {6.1.1}Machine Learning approach}{28}{subsubsection.6.1.1}
+\contentsline {subsubsection}{\numberline {6.1.2}Custom algorithm approach}{29}{subsubsection.6.1.2}
+\contentsline {subsection}{\numberline {6.2}Protocol}{30}{subsection.6.2}
+\contentsline {subsubsection}{\numberline {6.2.1}Additional fields}{30}{subsubsection.6.2.1}
+\contentsline {subsection}{\numberline {6.3}Result}{31}{subsection.6.3}
+\contentsline {subsubsection}{\numberline {6.3.1}Experimental evaluation}{32}{subsubsection.6.3.1}
+\contentsline {section}{\numberline {7}Evaluation and Results}{34}{section.7}
+\contentsline {subsection}{\numberline {7.1}Experimental setup}{34}{subsection.7.1}
+\contentsline {subsubsection}{\numberline {7.1.1}List of components}{34}{subsubsection.7.1.1}
 \contentsline {subsubsection}{\numberline {7.1.2}Wiring}{34}{subsubsection.7.1.2}
 \contentsline {subsection}{\numberline {7.2}Experiments}{34}{subsection.7.2}
-\contentsline {subsection}{\numberline {7.3}Performance and Results}{35}{subsection.7.3}
+\contentsline {subsection}{\numberline {7.3}Performance and Results}{36}{subsection.7.3}
 \contentsline {subsubsection}{\numberline {7.3.1}Remote control}{36}{subsubsection.7.3.1}
-\contentsline {subsubsection}{\numberline {7.3.2}Situated dynamic behaviour experiment}{36}{subsubsection.7.3.2}
-\contentsline {section}{\numberline {8}Discussion}{38}{section.8}
-\contentsline {subsection}{\numberline {8.1}Downsides}{39}{subsection.8.1}
-\contentsline {subsection}{\numberline {8.2}Advantages}{40}{subsection.8.2}
+\contentsline {subsubsection}{\numberline {7.3.2}Situated dynamic behaviour experiment}{37}{subsubsection.7.3.2}
+\contentsline {section}{\numberline {8}Discussion}{40}{section.8}
+\contentsline {subsection}{\numberline {8.1}Downsides}{40}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.2}Advantages}{41}{subsection.8.2}
 \contentsline {subsection}{\numberline {8.3}Comparing technologies}{41}{subsection.8.3}
-\contentsline {subsection}{\numberline {8.4}Applications}{41}{subsection.8.4}
-\contentsline {subsection}{\numberline {8.5}Faster communication}{41}{subsection.8.5}
-\contentsline {subsection}{\numberline {8.6}Future work}{42}{subsection.8.6}
-\contentsline {section}{\numberline {9}Conclusion}{43}{section.9}
+\contentsline {subsection}{\numberline {8.4}Applications}{42}{subsection.8.4}
+\contentsline {subsection}{\numberline {8.5}Faster communication}{42}{subsection.8.5}
+\contentsline {subsection}{\numberline {8.6}Future work}{43}{subsection.8.6}
+\contentsline {section}{\numberline {9}Conclusion}{44}{section.9}
