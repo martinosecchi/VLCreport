@@ -1,10 +1,5 @@
-
-[In the next chapters I describe the overall characteristics and limitations that a VLC system should present according to my findings, identify the variables involved and the set of parameters necessary for it to work\\
-This chapter should provide a useful starting point for whoever plans to implement one in practice]\\
-What does one need to make his own VLC system?\\
+%[In the next chapters I describe the overall characteristics and limitations that a VLC system should present according to my findings, identify the variables involved and the set of parameters necessary for it to work. This chapter should provide a useful starting point for whoever plans to implement one in practice What does one need to make his own VLC system?]
 %Structure of a VLC system: logical layer, control layer, physical layer. Analysis and characteristics of the three.
-
-
 %logical abstraction
 Every visible light communication system shares the same underlying structure, as also general other communication systems.
 Communication needs to be established between two ends, one end that acts as a transmitter and the other that acts as a receiver.
@@ -34,9 +29,15 @@ For a transmitter, this layer produces the instructions to pass on to the contro
 This process can be seen as the logical encoding of the information, ready to be transferred and become physical encoding.
 At the opposite end of the transmission, the logical layer of a receiver is given data about physical variations measured by the sensor(s) used in the system, and needs to reconstruct and interpret such data back to the original information.
 Contrary to the previous layers, the performance of the logical layer doesn't rely much on the hardware and the physical characteristics of the components, but rather on the software techniques and algorithms that implement it.
-A well structured logical layer can even add more reliability to an otherwise uncertain medium of communication, as will be seen in later chapters.
+A well structured logical layer could potentially add more reliability to an otherwise uncertain medium of communication, allowing a stricter control on the traffic and implementing recovery options in case of mistakes.
 
-\todo{do a graph of logical control and physical.}
+\begin{figure}[hbt]
+  \centering
+  \includegraphics[height=180px]{img/LCP}
+  \caption{Conceptual layers of the system.}
+  \label{fig:lcp}
+\end{figure}
+
 
 %prototype architecture
 \subsection{Experimental setup}
@@ -46,6 +47,7 @@ The system is composed of two main modules: a transmitter module, and a receiver
 The transmitter module uses On Off Keying with Manchester Coding (see \ref{modulschemes})  to convey signals with light.
 In order to allow testing, this module takes some arbitrary input from a user, encapsulates the information and encodes it to produce variations in light intensity, through the control of a light emitter.
 The receiver side measures the light variations through the use of a photoresistor, or light sensor, reconstructing and interpreting the sensor data back into the original messages. 
+If the message that is received matches the one that is sent, the communication is considered successful.
 Each module includes different components, listed in section \ref{components}.
 Fig. \ref{fig:sys over} shows an overview of the prototype's architecture.
 
@@ -56,20 +58,24 @@ Fig. \ref{fig:sys over} shows an overview of the prototype's architecture.
 \label{fig:sys over}
 \end{figure}
 
-\todo{in the experimental setup, it's considered almost exclusively low power DC LED, discuss role of big bulb}
-
 %transmitter
 \subsubsection{Transmitter}
-Transmission starts from a terminal, where a client can input messages as strings. These are then encapsulated into Protocol Data Units (PDUs) and sent to a micro controller through a serial connection.
+Transmission starts from a terminal, where a user can input messages as strings. These are then encapsulated into Protocol Data Units (PDUs) and sent to a micro controller through a serial connection.
 In this case, the micro controller that was used for transmission is an Arduino board.
 The board encodes the received bytes into Manchester Code, and then controls the light signal by switching on and off the emitter accordingly.
 A light emitting diode is the furthest end of the transmitter module.
 For this part, multiple setups have been tried.
 The fastest emitter that has been tested is single low power LED connected to the board and powered directly by it, which allows very fast switching.
+LEDs are preferable compared to incandescent or fluorescent light bulbs, since they are generally faster and are not damaged by the switching like the other options.
+All other kinds of bulbs, halogen, incandescent and fluorescent, have tungsten filaments that get damaged by the thermal shock of the switching, so they require more time, more power and do not last as long if compared to LEDs.
 A second setup has also been tested with a commercial LED bulb powered by an external power source (mains electricity), and controlled by the board through a switcher. 
+A bigger bulb, powered by a bigger power source, can achieve higher luminous intensities and reach longer distances.
+However controlling external power sources is lightly more complex, and especially so with alternating current.
+This second setup with the LED light bulb was not used in the final stages to achieve communication, for various limitations encountered in the process.
+Most of the results achieved later on will be referring to the first setup with the fast switching low power LED, unless otherwise specified.
 
-\todo{mention that we use LEDs because they are faster and do not wear out.}
 
+%\todo{in the experimental setup, it's considered almost exclusively low power DC LED, discuss role of big bulb}
 
 %receiver
 \subsubsection{Receiver}
@@ -91,8 +97,8 @@ Transmitter:
 \item Genuino Uno micro controller board, based on ATmega328P \cite{genuinouno}
 \item Light emitting diodes:
 \begin{enumerate}
-\item low power LED, Blue 10 mm, forward voltage 3.0-3.4VDC, luminosity of 8 000-10 000 MCD, directional, 30$^{\circ}$ viewing angle
-\item commercial LED bulb, 230 V AC, 3 W, 240 lumen, directional, 120$^{\circ}$ viewing angle
+\item low power LED, Blue 10 mm, forward voltage 3.0-3.4VDC, luminosity of 8 000-10 000 MCD, directional, 30$^{\circ}$ viewing angle \cite{ledDS}
+\item commercial LED bulb, 230 V AC, 3 W, 240 lumen, directional, 120$^{\circ}$ viewing angle 
 \end{enumerate}
 \item Solid State Relay for Arduino, 5V activation, 240V load
 \end{enumerate}
@@ -103,11 +109,19 @@ Receiver:
 \item Terminals:
 \begin{enumerate}
 \item personal computer for test of communication
-\item Raspberry Pi 3 Model B to be applied on a mobile robot
+\item Raspberry Pi 3 Model B to be applied on a mobile robot \cite{raspberrypi}
 \end{enumerate}
 \end{enumerate}
 
 \subsection{Wiring}
 In figure \ref{fig:wiringDC} is shown the wiring of all the components of the prototype system.
-\todo{add wiring? diagram for small setup and also setup with ssr and big bulb}
+
+\begin{figure}[hbt]
+\centering
+  \includegraphics[height=150px]{img/transmitter_schem1}
+  \includegraphics[height=150px]{img/receiver_schem1}
+  \caption{Wiring of the boards and sensors.}
+  \label{fig:wiringDC}
+\end{figure}
+
 

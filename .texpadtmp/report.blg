@@ -3,18 +3,30 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: /Volumes/Macintosh HDD/martinosecchi/Documents/university/ITU/ITU 3rd semester/Thesis/report/.texpadtmp/report.aux
 The style file: plain.bst
 Database file #1: ../report.bib
+I was expecting a `,' or a `}'---line 30 of file ../report.bib
+ : 
+ : journal={\url{https://www.fcc.gov/general/spectrum-crunch}}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
 Warning--string name "springer-lncs-ad" is undefined
---line 108 of file ../report.bib
+--line 125 of file ../report.bib
 Warning--string name "ants2006" is undefined
---line 110 of file ../report.bib
+--line 127 of file ../report.bib
 Warning--string name "springer-lncs" is undefined
---line 117 of file ../report.bib
+--line 134 of file ../report.bib
 Warning--string name "lncs" is undefined
---line 118 of file ../report.bib
-Too many commas in name 1 of "{J. Vucic}, {C. Kottke}, {S. Nerreter}, {K. D. Langer}, {J. W. Walewski}" for entry 500Mbps
+--line 135 of file ../report.bib
+I was expecting a `,' or a `}'---line 192 of file ../report.bib
+ : 
+ : year={2015}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Too many commas in name 1 of "{L. C. Png}, {L. Chen}, {S. Liu}, {W. K. Peh}" for entry arduinobasedindoors
 while executing---line 1049 of file plain.bst
 Too many commas in name 1 of "{J. Vucic}, {C. Kottke}, {S. Nerreter}, {K. D. Langer}, {J. W. Walewski}" for entry 500Mbps
 while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "{J. Vucic}, {C. Kottke}, {S. Nerreter}, {K. D. Langer}, {J. W. Walewski}" for entry 500Mbps
+while executing---line 1049 of file plain.bst
 Too many commas in name 1 of "{A.M. Khalid}, {G. Cossu}, {R. Corsini}, {P. Choudhury}, {E. Ciaramella}" for entry 1Gbps
 while executing---line 1049 of file plain.bst
 Too many commas in name 1 of "{A.M. Khalid}, {G. Cossu}, {R. Corsini}, {P. Choudhury}, {E. Ciaramella}" for entry 1Gbps
@@ -43,10 +55,17 @@ Too many commas in name 1 of "{G. Cossu}, {A.M. Khalid}, {P. Choudhury}, {R. Cor
 while executing---line 1049 of file plain.bst
 Too many commas in name 1 of "{G. Cossu}, {A.M. Khalid}, {P. Choudhury}, {R. Corsini}, {E. Ciaramella}" for entry 3.4Gbps
 while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "{Chakkor Saad}, {El Ahmadi Cheikh}, {Baghouri Mostafa}, {Hajraoui Abderrahmane}" for entry comparison
+while executing---line 1049 of file plain.bst
 Too many commas in name 1 of "{A.M. Khalid}, {G. Cossu}, {R. Corsini}, {P. Choudhury}, {E. Ciaramella}" for entry 1Gbps
 while executing---line 1090 of file plain.bst
 Too many commas in name 1 of "{A.M. Khalid}, {G. Cossu}, {R. Corsini}, {P. Choudhury}, {E. Ciaramella}" for entry 1Gbps
 while executing---line 1090 of file plain.bst
+Too many commas in name 1 of "{Chakkor Saad}, {El Ahmadi Cheikh}, {Baghouri Mostafa}, {Hajraoui Abderrahmane}" for entry comparison
+while executing---line 1090 of file plain.bst
+Warning--empty journal in comparison
+Warning--empty journal in ledDS
+Warning--empty journal in crisis
 Too many commas in name 1 of "{D. Tsonev}, {H. Chun}, {S. Rajbhandari}, {J.J.D. McKendry}, {S. Videv}, {E. Gu}, {M. Haji}, {S. Watson}, {A. Kelly}, {G. Faulkner}, {M.D. Dawson}, {H. Haas}, {D. OBrien}" for entry 3.5Gbps
 while executing---line 1090 of file plain.bst
 Too many commas in name 1 of "{D. Tsonev}, {H. Chun}, {S. Rajbhandari}, {J.J.D. McKendry}, {S. Videv}, {E. Gu}, {M. Haji}, {S. Watson}, {A. Kelly}, {G. Faulkner}, {M.D. Dawson}, {H. Haas}, {D. OBrien}" for entry 3.5Gbps
@@ -67,56 +86,67 @@ Too many commas in name 1 of "{D. Tsonev}, {H. Chun}, {S. Rajbhandari}, {J.J.D. 
 while executing---line 1090 of file plain.bst
 Too many commas in name 1 of "{D. Tsonev}, {H. Chun}, {S. Rajbhandari}, {J.J.D. McKendry}, {S. Videv}, {E. Gu}, {M. Haji}, {S. Watson}, {A. Kelly}, {G. Faulkner}, {M.D. Dawson}, {H. Haas}, {D. OBrien}" for entry 3.5Gbps
 while executing---line 1090 of file plain.bst
+Warning--empty journal in thymio
+Warning--empty year in thymio
+Warning--empty journal in raspberrypi
+Warning--empty year in raspberrypi
 Too many commas in name 1 of "{G. Cossu}, {A.M. Khalid}, {P. Choudhury}, {R. Corsini}, {E. Ciaramella}" for entry 3.4Gbps
 while executing---line 1090 of file plain.bst
 Too many commas in name 1 of "{G. Cossu}, {A.M. Khalid}, {P. Choudhury}, {R. Corsini}, {E. Ciaramella}" for entry 3.4Gbps
 while executing---line 1090 of file plain.bst
+Warning--empty year in tedtalk
 Warning--empty journal in haas1
 Too many commas in name 1 of "{J. Vucic}, {C. Kottke}, {S. Nerreter}, {K. D. Langer}, {J. W. Walewski}" for entry 500Mbps
 while executing---line 1090 of file plain.bst
 Too many commas in name 1 of "{J. Vucic}, {C. Kottke}, {S. Nerreter}, {K. D. Langer}, {J. W. Walewski}" for entry 500Mbps
 while executing---line 1090 of file plain.bst
+Warning--empty journal in interferenceVLC
+Too many commas in name 1 of "{L. C. Png}, {L. Chen}, {S. Liu}, {W. K. Peh}" for entry arduinobasedindoors
+while executing---line 1090 of file plain.bst
+Warning--empty journal in arduinobasedindoors
 Warning--empty booktitle in pathformation
 Warning--empty publisher in pathformation
-You've used 17 entries,
+Warning--empty year in philps
+Warning--empty year in poveyspec
+You've used 29 entries,
             2118 wiz_defined-function locations,
-            584 strings with 6831 characters,
-and the built_in function-call counts, 4305 in all, are:
-= -- 417
-> -- 163
-< -- 2
-+ -- 68
-- -- 50
-* -- 226
-:= -- 742
-add.period$ -- 50
-call.type$ -- 17
-change.case$ -- 74
+            642 strings with 8683 characters,
+and the built_in function-call counts, 7103 in all, are:
+= -- 695
+> -- 236
+< -- 5
++ -- 102
+- -- 70
+* -- 363
+:= -- 1251
+add.period$ -- 86
+call.type$ -- 29
+change.case$ -- 122
 chr.to.int$ -- 0
-cite$ -- 20
-duplicate$ -- 169
-empty$ -- 380
-format.name$ -- 50
-if$ -- 902
+cite$ -- 44
+duplicate$ -- 335
+empty$ -- 588
+format.name$ -- 70
+if$ -- 1468
 int.to.chr$ -- 0
-int.to.str$ -- 17
-missing$ -- 11
-newline$ -- 86
-num.names$ -- 34
-pop$ -- 100
+int.to.str$ -- 29
+missing$ -- 29
+newline$ -- 146
+num.names$ -- 58
+pop$ -- 145
 preamble$ -- 1
-purify$ -- 59
+purify$ -- 93
 quote$ -- 0
-skip$ -- 137
+skip$ -- 242
 stack$ -- 0
-substring$ -- 204
-swap$ -- 25
-text.length$ -- 2
+substring$ -- 318
+swap$ -- 55
+text.length$ -- 5
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 68
-warning$ -- 3
-while$ -- 43
-width$ -- 19
-write$ -- 166
-(There were 32 error messages)
+type$ -- 116
+warning$ -- 15
+while$ -- 71
+width$ -- 31
+write$ -- 285
+(There were 38 error messages)

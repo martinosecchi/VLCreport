@@ -7,29 +7,30 @@
 Visible Light Communication, often abbreviated to VLC, is a type of wireless communication achieved with the transmission of signals in the spectrum of visible light.
 For most applications, this communication form is implemented through the use of  normal light emitting diodes (LEDs) or fluorescent lamps switched on and off at high rates to produce light signals.
 It is gaining increasing popularity as an application of pervasive computing, since many light emitting devices are commonly present in everyday life and used everywhere.
-This form of communication has been proven by research to achieve comparable performances to more classic ones, competing in speed and distance (section \ref{sectionVLC}).
+This form of communication has been proven by research to achieve performances comparable to more classic ones, performing well both in speed and distance (section \ref{sectionVLC}).
 Although it has some clear limitations, it also provides appealing features in certain contexts.
-By definition, a VLC system will not work outside of a line of sight with the source, excluding cases where light reflection might be sufficient.
-This can be seen as a limitation for obvious reasons, but also an advantage in security sensitive applications.
-Communication can in fact be restricted in specific areas delimited by physical boundaries.
-However, it will result less effective in presence of direct light from other sources, like direct sunlight, and is generally designed for indoor usage or nocturnal.
+In general, a VLC system will need a direct line of sight between the source and the receiver, excluding cases where light reflection might be sufficient.
+This can be seen as a limitation for obvious reasons, but this characteristic can be exploited to produce interesting features to certain applications.
+Communication can in fact be restricted in specific areas delimited by physical boundaries, ideal for localised services or security sensitive applications.
+However, communication will result less effective in presence of direct light from other sources, like direct sunlight, and VLC systems are generally designed for indoor usage.
 \newline
 %situated
-A very distinctive trait of VLC systems is that light is a form of \textbf{situated} communication, where the message is not necessarily separated from the physical environment in which it has meaning.
+A very distinctive trait of VLC systems is that light is a form of \textbf{situated} communication \cite{kasper}, where the message is not necessarily separated from the physical environment in which it has meaning.
 This allows to transmit a message that includes additional information embedded in the medium of transmission rather than its content.
 In particular, information relative to localisation and direction can just be derived from the light source's position, instead of it being encoded in the message.
-This is in general impossible to achieve with many other technologies, like WiFi or Bluetooth, that can only give a sense of directionless proximity to the source, at least without employing techniques like triangulation or fingerprinting or sharing a common reference system.
+This is in general harder to achieve with many other technologies, like WiFi or Bluetooth, that can only give a sense of directionless proximity to the source, at least without employing techniques like triangulation or fingerprinting or sharing a common reference system.
 With situated communication, the properties of the transmission can enrich the information to be received, that will be more than just the content of the message.
-Very much like human hearing, messages like "I'm here" or "come here" can be fully understood and acted upon.
+Very much like human hearing, messages like "I'm here" or "come here" can be fully understood and acted upon when the source of the message can be clearly located.
 \newline
 %swarm robotics
 This characteristic has been proven very useful in the field of mobile robotics, and in particular in \textbf{swarm robotics}.
-Swarm robotics is a control paradigm used in multi-robot systems in which usually large amounts of robots interact with each other to form a collective behaviour, with the ultimate goal of performing a task.
+Swarm robotics is the study and application of a control paradigm used in multi-robot systems, in which usually large amounts of robots interact with each other to form a collective behaviour with the ultimate goal of performing a task.
 The strong point of swarm robotics is that relatively simple agents can produce fairly complex swarm behaviours, exploiting constant feedback and communication between the agents.
 This research field originates from the observation of emergent behaviour exhibited by social organisms, examples of which can be insects like ants and termites, birds, fish, quadrupeds and bacteria.
 This kind of systems rely intrinsically on local communication and mutual localisation between the agents 
 \cite{architecturesswarm}.
 A communication method that allows both would therefore allow greater simplicity in the design of such systems.
+\newline
 Visible light communication has been applied to swarm robotics in numerous occasions, most notably in the Swarm-bots and Swarmanoid projects funded by the European Commission in 2002 and 2006.
 In these projects, robotic agents communicate states with RGB LEDs in a colour based system.
 Each agent can communicate a state coded into a specific colour, and perceive other agents' states.
@@ -37,19 +38,21 @@ This functionality can be used to achieve dynamic shape formation of self assemb
 \newline
 %motivation
 These examples, like many others, use a rather reactive approach to obtain and communicate information.
-In a colour based system like the before mentioned one, agents simply react to certain colours in certain ways, like they would do for any other sensory information when the behaviour is programmed.
+In a colour based system like the before mentioned one, agents simply react to certain colours in predefined ways, like they would do for any other sensory information when the behaviour is programmed.
 It is the same with other kinds of information like the ones coming from proximity sensors or thermometers, accelerometers, gyroscopes and so on.
-There are circumstances however where this is not enough, and more complex information need to be passed from one agent to another.
-For instance this could be the case of embodied evolutionary robotics, where agents of a system need to communicate information necessary for reconfiguration of hardware or behaviour, in order to adapt to previously unknown or dynamically changing conditions autonomously \cite{embodiedevolution}.
+There are circumstances however where this kind of reactive approach is not enough, and more complex information need to be passed from one agent to another.
+A generic kind of communication that still achieves to be local and allows agents to localise each other could benefit greatly the field of swarm robotics.
+Another example could be embodied evolutionary robotics, where agents of a system need to communicate information necessary for reconfiguration of hardware or behaviour, in order to adapt to previously unknown or dynamically changing conditions autonomously \cite{embodiedevolution}.
 This kind of complex information could be passed through a generic purpose communication system that allows any kind of message to be sent and received, while still maintaining the advantages of a situated medium of transmission.
 %applications
 Such a technology could be used in both very simple or more advanced forms, the simplest of which would be mono directional, environment to robot communication.
 This could be used in the context of mobile robotics to provide an aid for environment navigation, for example providing useful information about indoor positioning,
-or a form of remote control of agents, instructing robots on what actions to perform in predetermined locations, to assist in the execution of specific tasks. 
+or a form of remote control of agents, instructing robots on what actions to perform in predetermined locations, to assist in the execution of specific tasks or location specific services. 
 The technology could also be used in a slightly more complex scenario of robot-to-robot 1- or even 2-way communication between multiple agents to enable cooperation, behavioural reconfiguration, hardware/shape reconfiguration, and in general to exchange information.
 \newline
 %design
 The design of a prototype system will help analyse the properties of a generic VLC system, its performances and results in the given applicative scenario of mobile robotics.
 The design process will be focused on simplicity and inexpensiveness where possible, by using mostly off-the-shelf and easily obtainable hardware components to achieve sufficient performance within reasonable cost and computational power.
+This prototype system will be tested and evaluated both as a general communication system and as a system to be specifically used for mobile robotics.
 
-\todo{more introduction}
+\todo{requirements, sneak peek in the results, human eye can see up to 1000 Hz more or less}

@@ -9,17 +9,26 @@
 \bibitem{genuinouno}
 Arduino.
 \newblock Arduino uno overview.
-\newblock \url{https://www.arduino.cc/en/main/arduinoBoardUno}.
+\newblock {\em \url{https://www.arduino.cc/en/main/arduinoBoardUno}}, April 28,
+  2017.
 
 \bibitem{arduinoyun}
 Arduino.
 \newblock Arduino yun overview.
-\newblock \url{https://www.arduino.cc/en/Main/ArduinoBoardYun}.
+\newblock {\em \url{https://www.arduino.cc/en/Main/ArduinoBoardYun}}, April 28,
+  2017.
 
 \bibitem{IEEE}
 IEEE~Standards Association.
 \newblock Ieee 802.15 wpan task group 7 (tg7) visible light communication.
-\newblock \url{http://www.ieee802.org/15/pub/TG7.html}.
+\newblock {\em \url{http://www.ieee802.org/15/pub/TG7.html}}, April 9, 2011.
+
+\bibitem{atmel}
+Atmel.
+\newblock Avr120: Characterization and calibration of the adc on an avr.
+\newblock {\em
+  \url{http://www.atmel.com/Images/Atmel-2559-Characterization-and-Calibration-of-the-ADC-on-an-AVR_ApplicationNote_AVR120.pdf}},
+  page p.10, 2016.
 
 \bibitem{distrcoord}
 Nolfi~S. Baldassarre~G., Parisi~D.
@@ -27,9 +36,21 @@ Nolfi~S. Baldassarre~G., Parisi~D.
   self-organisation.
 \newblock {\em Artificial Life}, 12(3):289--311, Summer 2006.
 
+\bibitem{comparison}
+{Baghouri Mostafa}~{Hajraoui Abderrahmane} {Chakkor Saad}, {El Ahmadi Cheikh}.
+\newblock Comparative performance analysis of wireless communication protocols
+  for intelligent sensors and their applications.
+\newblock 2014.
+
+\bibitem{ledDS}
+Ltd. China Young Sun LED Technology~Co.
+\newblock Super bright led - blue 10mm datasheet.
+\newblock 2017.
+
 \bibitem{crisis}
 US~Federal~Communication Commission.
-\newblock \url{https://www.fcc.gov/general/spectrum-crunch}.
+\newblock Spectrum crunch.
+\newblock 2011.
 
 \bibitem{3.5Gbps}
 {S. Rajbhandari} {J.J.D. McKendry} {S. Videv} {E. Gu} {M. Haji} {S. Watson} {A.
@@ -38,6 +59,19 @@ US~Federal~Communication Commission.
 \newblock A 3-gb/s single-led ofdm-based wireless vlc link using a gallium
   nitride led.
 \newblock {\em Photonics Technology Letter 99(99)}, 2014.
+
+\bibitem{thymio}
+{ECAL} {EPFL}.
+\newblock Thymio.
+
+\bibitem{opticalfiber}
+The Fiber Optic~Association (FOA).
+\newblock Optical fiber.
+\newblock {\em \url{www.thefoa.org}}, 2015.
+
+\bibitem{raspberrypi}
+Raspberry~Pi Foundation.
+\newblock Raspberry pi.
 
 \bibitem{3.4Gbps}
 {P. Choudhury} {R. Corsini}~{E. Ciaramella} {G. Cossu}, {A.M. Khalid}.
@@ -53,8 +87,8 @@ R.~Gro{\ss}, M.~Bonani, F.~Mondada, and M.~Dorigo.
 Harald Haas.
 \newblock Ted talk online by harald haas on wireless data from every light
   bulb.
-\newblock
-  \url{http://www.ted.com/talks/harald_haas_wireless_data_from_every_light_bulb}.
+\newblock {\em
+  \url{http://www.ted.com/talks/harald_haas_wireless_data_from_every_light_bulb}}.
 
 \bibitem{haas1}
 Harald Haas.
@@ -73,6 +107,23 @@ Evert Haasdijk, Nicolas Bredeche, and A.~E. Eiben.
   of a white led.
 \newblock {\em J. Lightwave Technol. 28 (24), pp. 3512–3518}, 2010.
 
+\bibitem{interferenceVLC}
+{Sung-Yoon Jung} {Ji-Hwan Lee}, {Deok-Weon Song}.
+\newblock Interference analysis of visible light communication based on pd
+  array.
+\newblock 2014.
+
+\bibitem{arduinobasedindoors}
+{S. Liu}~{W. K. Peh} {L. C. Png}, {L. Chen}.
+\newblock An arduino-based indoor positioning system (ips) using visible light
+  communication and ultrasound.
+\newblock pages 217--218, May 2014.
+
+\bibitem{ronja}
+Twibright Labs.
+\newblock Ronja.
+\newblock {\em \url{http://ronja.twibright.com/about.php}}, 2001.
+
 \bibitem{architecturesswarm}
 {D. Rus.} {N. Correll}.
 \newblock Architectures and control of networked robotic systems.
@@ -83,14 +134,35 @@ S.~Nouyan and M.~Dorigo.
 \newblock Chain based path formation in swarms of robots.
 \newblock volume 4150, pages 120--131. 2006.
 
+\bibitem{philps}
+Philips.
+\newblock Where are the discounts? carrefours led supermarket lighting from
+  philips will guide you.
+\newblock {\em
+  \url{http://www.philips.com/a-w/about/news/archive/standard/news/press/2015/20150521-Where-are-the-discounts-Carrefours-LED-supermarket-lighting-from-Philips-will-guide-you.html}}.
+
 \bibitem{poveyspec}
 Gordon Povey.
-\newblock
-  \url{http://visiblelightcomm.com/an-ieee-standard-for-visible-light-communications/}.
+\newblock An ieee standard for visible light communications.
+\newblock {\em
+  \url{http://visiblelightcomm.com/an-ieee-standard-for-visible-light-communications/}}.
+
+\bibitem{ronjaestimation}
+J.~Soderberg.
+\newblock Free space optics in the czech wireless community: Shedding some
+  light on the role of normativity for user-initiated innovations.
+\newblock {\em Science, Technology and Human Values. 36 (4): 423}, 2010.
+
+\bibitem{kasper}
+Kasper St{\o}y.
+\newblock Using situated communication in distributed autonomous mobile
+  robotics.
+\newblock {\em SCAI '01 Proceedings of the Seventh Scandinavian Conference on
+  Artificial Intelligence}, pages 44--52, 2001.
 
 \bibitem{holeavoidance}
-V.~Trianni, S.~Nolfi, and M.~Dorigo.
-\newblock Cooperative hole avoidance in a {\em swarm-bot}.
+{M.Dorigo} {V.Trianni}, {S.Nolfi}.
+\newblock Cooperative hole avoidance in a swarm-bot.
 \newblock {\em Robotics and Autonomous Systems}, 54(2):97--103, 2006.
 
 \end{thebibliography}

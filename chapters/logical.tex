@@ -1,5 +1,9 @@
 
 \section{Logical layer}
+\label{logical}
+
+\todo{what requirements?}
+
 This layer represents the pure software component of the system.\\
 This layer handles the input of the messages to be transmitted, the communication and encoding to the control layer, and most importantly the decoding, interpretation and forwarding of the message to its final consumer.
 Logical encoding may be able to add robustness to the unreliable aspects of the communication.
@@ -45,58 +49,82 @@ This might likely slow down the reading process.\\
 
 \subsubsection{Custom algorithm approach}
 These poor results ultimately led to a change of approach for reading the data. 
-Just looking at fig. \ref{sample} it's pretty straightforward to see that the high peaks represent 1s and the low peaks represent 0s. 
+Just looking at fig. \ref{fig:sample} it's pretty straightforward to see that the high peaks represent 1s and the low peaks represent 0s. 
 By setting some rules, a custom classifier could predict a result without the need to be trained with sample data.
 In particular, the classifier analyses sequences of values, trying to find sequences that are either monotonically increasing or monotonically decreasing.
 Also a noise factor has to be taken into account, in this way small enough variations are not considered.
-As mentioned before, there are only two kinds of peaks in the sequences, either single or double peaks.
+As mentioned before, there are only two kinds of peaks in the sequences, either single or double peaks, due to the encoding of the signal.
 Therefore, it's of critical importance to be able to distinguish the two cases. One criteria that was originally deployed for this was to count the number of values that progress in the same direction, either up or down. 
 This was later changed to the more precise criteria of duration of such sequences, and for this reason for each sensor value a timestamp is also included in the control layer, representing the time of reception for that specific value.\\ 
 With this in mind, the algorithm has been developed to very simply count the duration of either monotonically increasing or decreasing sequences of values, and produce a prediction when the direction changes, based on such duration.
-This technique performs particularly well in this application, producing up to 100\% success rate in certain cases.
+This technique performs particularly well in this application, producing up to 100\% success rate in optimal conditions.
  Runtime wise, the algorithm takes constant time for each value that is received, and may or may not produce a resulting prediction.
 A simplified version of the algorithm can be found in fig. \ref{code}, written in Python 2.7.
 The algorithm has been simplified to be more readable.
+One aspect that is of crucial importance is the parameter called $_doubletime$ in the code.
+This parameter represents the level above which the duration of a signal is considered a double symbol.
+With a continuous reception and optimal conditions, this value would be exactly the interval of time that two subsequent symbols last in the transmitter.
+For a transmission rate of 250 Hz, with intervals of 2 ms between two signals, two subsequent symbols would last exactly 4 ms.
+However, setting the parameter to be 4 ms would produce wrong results in many cases, due to the reception rate.
+A reception rate of 1200 Hz produces a reading every approximately 0.833 ms, which means that a 4 ms interval would fall between four received values after 3.332 ms, and five received values after 4.165 ms.
+In many cases, the fifth value received after 4.165 ms from the start of the symbol, is already the first step to the opposite direction.
+This is why the parameter $_doubletime$ needs to be adjusted according to the reception rate and not the transmission rate, in this example at 3.332 ms instead of 4 ms.
 
 \subsection{Protocol}
 As can be seen the rates of transmission and reception in this prototype system are not very high, if compared to average wireless transmission speeds, which are measured in Mbps.
 Transmission in visible light is also exposed to a high degree of uncertainty, depending on parameters like distance, maximum brightness, interference, noise, and so on.
 In this prototype, communication is only established in one direction, which additionally increases the threat of getting wrong results.
-In order to compensate all this aspects, an effort to strengthen the success rate has been made by structuring the communication into a very basic protocol.
-Each PDU is included between two single bytes: STX, that indicates the start of a message, and a byte ETX which indicates its end. These two are bytes 0x02 and 0x03 respectively. To avoid that the reader assumes an ETX byte wrongfully while reading the message, a length byte LEN is also included in the header of the PDU, to specify the length of the message in bytes.
+In order to compensate all these aspects, an effort to strengthen the success rate has been made by structuring the communication into a very basic protocol.
+Each PDU is included between two single bytes: STX, that indicates the start of a message, and a byte ETX which indicates its end. 
+These two are bytes 0x02 and 0x03 respectively.
+To avoid that the receiver wrongfully interprets an ETX byte while reading the message, perhaps as a combination of the final part of one byte and the start of another, a length byte LEN is also included in the header of the PDU, to specify the length of the message in bytes.
 Additionally, each PDU is restrained to have a maximum size, and longer messages need to be split into more PDUs.
-This is mostly to preserve the serial connection between logical layer and control layer to overflow the serial buffer.
+This is mostly to preserve the serial connection between logical layer and control layer, to avoid overflow the serial buffer.
 This three fields combined should make it fairly easy for the receiver to know if some parts of the message were lost during transmission.
-Since the communication is established mono directionally, the transmitter wouldn't know if the message was delivered, but the receiver most likely would.
+Since the communication is established mono-directionally, the transmitter wouldn't know if the message was delivered, but the receiver most likely would.
 Mistaken symbols are very unlikely in this kind of communication, it is much more likely to entirely miss some.
-Therefore the receiver could easily know if the message was delivered or not.
-To increase reliability, the transmitter could be transmitting the same message over and over.
+Therefore the receiver could easily know if the message was delivered or not, by comparing the length of the message that was initially declared and the length of the message that was received.
+To increase the chances of a successful delivery, the transmitter could be transmitting the same message over and over in a mono-directional scenario.
 
 \subsubsection{Additional fields}
 Increasing the functionalities or complexity of the system, additional parameters in the PDU might result useful if not necessary. 
-Imagining a scenario with multiple receivers of messages broadcasted through light in a unilateral way, a receiver field could be added to the PDU. Also, it would be wise to perform encryption on the PDUs, in a way that only the intended receivers would be able to read the message directed to them.
-Establishing 2-way communication would also require more steps. 2-way communication would be a very good way to ensure correctness of the transmission. For this, at least 2 more parameters seem necessary: a sequence number to identify the packet, and a checksum to check correctness of the received message.
-A header for visible light communication doesn't require many parameters since it's likely to be the very last end of a communication process. Since it's mainly short distanced, it doesn't need any routing parameters as it would in big networks. 
+Imagining a scenario with multiple receivers of messages broadcasted through light in a unilateral way, a receiver ID field could be added to the PDU.
+ Also, it would be wise to perform encryption on the PDUs, in a way that only the intended receivers would be able to read the message directed to them.
+Establishing 2-way communication would also require more steps.
+In a 2-way communication it would be much easier to ensure correctness of the transmission. 
+For this, at least 2 more parameters seem necessary: a sequence number to identify the packet, and a checksum to check correctness of the received message.
+When the message received is of a different length than declared or produces a different checksum, the receiving side of the communication could just ask  for the same message again, or confirm correct reception otherwise.
+A header for visible light communication doesn't require many parameters in the case where a system establishes only local communication.
+Otherwise for messages to travel through a network, a PDU header would also need routing parameters for origin and destination of the message.
 
 \begin{figure}
 \centering
 \includegraphics[height=180px]{img/transmission}
-\caption{Example of transmission of message "a", the transmission include STX, ETX, and LEN bytes.}
+\caption{Example of transmission of message "a", the transmission include STX, ETX, and LEN bytes, over 5 samples.}
 \label{fig:transmissionA}
 \end{figure}
 
-\subsection{Results}
- \todo{protocol vs no protocol? bits correct per bits sent? compare other technologies?}
+\subsection{Result}
+ \todo{protocol vs no protocol?}
 
 Figure \ref{fig:transmissionA} shows an example of the transmission of the message "a", including STX, ETX and LEN bytes.
+In the figure it can be seen that the transmission starts from 100\% of brightness, and returns to 100\% when it's finished. 
+This is the normal operation of the communication system.
+A downside of this approach is that during transmission, although the rate of transmission is still fast enough to not be perceived by human eye other than as a light flickering, the intensity of the light drops to about 60\%, as an average of high and low peaks.
+This make it possible to actually guess when there is transmission just by looking at the light.
+A different approach could be to keep the alternating 1s and 0s even when there is no message to send.\\
+Other than knowing when there is transmission just by observing the light intensity, it's impossible to decode the message without recurring to machines.
+Once the signal as it is received is displayed graphically however, it is possible to decode it manually.
+The traits of the signal in the figure can be visually associated with the Manchester encoding of the message, clearly visible at least in the occurrence of double symbols. 
 In ASCII, letter "a" is represented by the byte 97, or 01100001 in binary.
 As previously mentioned, the STX is byte 2, ETX byte 3, and LEN in this case would be 1.
 In binary, the entire message would then be: 00000010 - 00000001 - 01100001 - 00000011.
-In Manchester encoding: 1010101010100110 - 1010101010101001 - 1001011010101001 - 1010101010100101.
-The traits of the signal in the figure can be visibly associated with the Manchester encoding of the message, clearly visible at least in the occurrence of double symbols. 
-A 00 and a 11 are clearly visible at the end of the first byte, a 00 almost conclude the second byte, follows a 11 connecting the second to the third byte, then a 00, 11, and so on.
+In Manchester encoding: 10101010101\textbf{0011}0 - 1010101010101\textbf{001 - 100}10\textbf{11}010101\textbf{001 - 1}0101010101\textbf{00}101.
+A 00 and a 11 are clearly visible at the end of the first byte, at about 40 ms after the start of the figure.
+ A 00 almost conclude the second byte at around 70 ms in the figure, follows a 11 connecting the second to the third byte, then a 00, 11, and so on.
+ 
 
-\subsubsection{Experimental setup}
+\subsubsection{Experimental evaluation}
 To test performance of the communication at its final stage, multiple tests have been performed on the prototype.
 For each test, the system takes user input for initialising the message to send, encodes it and sends it through light. 
 The receiver reconstructs the message depending on values retrieved from the sensor.
@@ -104,25 +132,34 @@ Tests have been performed at very close proximity of the sensor to the light sou
 A test is considered successful if every bit is correctly received and interpreted.
 Messages of different sizes have been tested.
 Table \ref{tab:txresults} illustrates the results of these tests.
+The message length reported on the table is measured in characters of the payload, each character represented by one byte and 16 symbols in Manchester encoding.
+For each message the 3 control bytes STX, LEN, ETX are also sent and need to be added for the total length of the message.
+
+\todo{how many experiments?}
 
 \begin{table}[hbt]
 \centering
-  \begin{tabular}{l c c c}
-    distance & ambient light & tests & successful \\
+  \begin{tabular}{l c c c c c}
+    distance & message length (chars) & symbols in pdu &  ambient light & tests & successful \\
     \hline
-   0 cm & yes & 50 & 100\% \\
-   0 cm & yes & 50 & 100\% \\
-   0 cm & yes & 50 & 100\% \\
-   0 cm & yes & 50 & 100\% \\
-   10 cm & yes & 50 & 92\% \\
-   10 cm & yes & 50 & 96\% \\
-   10 cm & yes & 50 & 88\% \\
-   10 cm & yes & 50 & 60\% \\
+   0 cm & 5 & 128 & yes & 50 & 100\% \\
+   0 cm & 10 & 208 & yes & 50 & 100\% \\
+   0 cm & 20 & 368 & yes & 50 & 100\% \\
+   0 cm & 30 & 528 & yes & 50 & 100\% \\
+   10 cm & 5 & 128 & yes & 50 & 92\% \\
+   10 cm & 10 & 208 & yes & 50 & 96\% \\
+   10 cm & 20 & 368 & yes & 50 & 88\% \\
+   10 cm & 30 & 528 & yes & 50 & 60\% \\
   \end{tabular}
   \caption{Tests of full transmission, success criteria is 100\% correctness.}
   \label{tab:txresults}
 \end{table}
 
+From to these results, it is possible to calculate the probability of receiving a symbol successfully at a distance of 10 cm.
+Assuming the event of receiving a symbol correctly is independent from the reception of previous symbols, the probability of receiving $x$ symbols correctly becomes $P(x) = P(1)^x$, where $P(1)$ represents the probability of receiving one symbol correctly. 
+Given $P(x)$ as the probability reported on the table, this makes the probability of receiving a single symbol correctly $P(1) = \sqrt[x]{P(x)}$.
+According to the results, this value ranges between $0.99903..$ and $0.99980..$ .
+These results confirm that shorter messages have a greater probability of being interpreted correctly, which makes the enforcement of the maximum PDU length rule even more important.
 
 \begin{figure}
 \centering

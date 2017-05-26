@@ -1,5 +1,7 @@
 \section{Control layer}
 
+\todo{what requirements?}
+
 %layer overview
 This layer is responsible of connecting the physical and the logical layers of the system, connecting the physical variations that produce the signal with the logical information they carry.
 For a transmitter this translates to the process of producing variations of the physical properties in a structured way according to what dictated by the logical layer, in a way that these variations reflect the information given.
@@ -17,6 +19,7 @@ However, the speed of the incoming connection from the logical layer would also 
 The same discussion applies for the reception rates, in reverse.
 In the prototype, the connections between control and logical layer are implemented as serial connections between the controller board and the terminal where the logical layer is running.
 Both boards are Arduinos, and handle the serial connection in the same way.
+%chars - bytes in python
 There are a few aspects to consider when implementing the link between control layer and logical layer, from the logical layer point of view.
 One aspect to consider is that the serial buffer has a limited size of 64 bytes in most Arduino boards, so it's important to keep the serial communication as light as possible to avoid overflow and loss of information.
 This means that if the message that needs to pass through is encoded as a string, it would need to be sent one character at a time and avoid unnecessary additional information.
@@ -24,18 +27,25 @@ In most cases, it's possible to encode a single character into one single 8-bits
 The system prototyped in this case was implemented using Python 2.7, which uses dynamic types and therefore doesn't have a specific type for \textit{chars}. 
 In Python, strings are objects with an overhead of 37 bytes, plus one byte for every character in the string.
 This would result in a very heavy serial transmission for just a few characters. Characters need to be converted in single bytes before sending them. 
-
-\todo{information about clock rates of the boards}
+Bytes are then converted to ASCII characters on the receiving side.
+%serial rate
+The serial communication used in both the receiver and the transmitter has been established in the prototype with the standard rate of 9600 Hz, since both the transmission and the reception rates are considerably slower.
+Both boards can potentially achieve a clock rate of 16 MHz, but the rate of the reception poses a serious limitation to the potential communication rate due to the time required to receive analog input and convert it to digital values.
 
 %reception
 \subsection{Reception rates}
 \label{recrates}
 Reception happens as fast as the micro controller allows, in fact the control process doesn't force a specific speed on the analog input coming from the sensor, but rather the rate of reception is bound to the clock rate of the processor in the control layer and the speed of the physical sensor.
 The average reception rate is of about one value every 0.833 ms, about 1200 Hz (or bits per second).
-This value naturally becomes the upper bound for the transmission rate, since if signals were sent faster, they wouldn't be received in time. 
+This value naturally becomes the upper bound for the transmission rate, since if signals were sent faster, some wouldn't be received in time. 
 The control layer also performs the two operations of appending a timestamp to each value once received before sending it to the next process, and filtering each value as an average of its direct predecessor and itself, to reduce noise.
 With the use of timestamps it's fairly simple to measure the reception rate before the serial connection.
 This rate is not constant, but has a standard deviation of about 0,0184 ms.
+% ADC
+Comparing this rate to the clock rate of the board of 16 MHz or the serial connection rate of 9600 Hz, it appears very slow.
+The bottleneck lies in the analog-to-digital converter (ADC) that is used in the board to convert analog values read from the sensor and coming from the physical world to digital ones to be manipulated by a software interface.
+In Arduino, analog input can be registered as an integer value between 0 and 1023, having what is called a resolution of 10 bits.
+To achieve this level of accuracy in the conversion, the ADC requires more time than the full potential of the board, and operates at a fraction of the clock rate slowing down the overall speed of the entire board.
 
 %transmission
 \subsection{Transmission rates}
@@ -79,8 +89,8 @@ Reception of the same message in different rates happens at different speeds, co
 The x-axis in the figure shows the progression of time receiving the message, and it appears clear that lower rates produce slower receptions.
 Another difference that is clearly noticeable is that the difference between 1s and 0s also varies depending on the time that the signal is forced to stay on.
 These results suggest that the lower the rate, the more reliable the communication, since broader variations would be more robust to interference and noise.
-However, the rate of 2 ms per signal has been chosen to be final transmission rate in the prototype system with the low power LED, being the fastest reliable rate.
-With a system that uses a different light emitter, or designed to be used at longer distances, different experiments would be advised.
+However, the rate of 2 ms per signal seems a good candidate to be the final transmission rate in the prototype system with the low power LED, being the fastest reliable rate.
+With a system that uses a different light emitter, or designed to be used at longer distances, different experiments could be necessary.
 \begin{figure}[hbt]
 \centering
   \includegraphics[height=140px]{img/overlap1}
@@ -136,23 +146,42 @@ Like in the previous paragraph, an answer to this question can be found experime
 \end{table}
 
 Table \ref{tab:2msdistances} shows the results of these experiments.
-Contrarily to section \ref{distancephy}, the percentages of brightness are relative to each separate experiment, in the sense that each separate experiment with a different distance has a different level for 100\% of brightness received.
- This means that for each experiment, a 100\% represents the maximum brightness measured in that experiment.
+Contrarily to section \ref{distancephy}, the percentages of brightness are relative to each separate experiment, in the sense that each experiment has a different level for 100\% of brightness received, depending on the distance.
+For each experiment, a 100\% represents the maximum brightness measured in that experiment.
 This is to shift the focus on the variations and the relation between high signals and low signals, to ultimately verify if even at different overall brightness levels transmission is still comparable.
 Maximum brightness levels are still reported on the table however.
 Two important aspects emerge from these results: one, that reliability remains reasonably high, and two that uncertainty in the average brightness for 1s and 0s grows a lot, probably due to the increasing weight of noise.
 
 % big light
 \subsection{Controlling AC powered lights}
-\todo{ssr talk}
 As was mentioned, the control layer is supposed to control the switching of the light bulb by directly control its power supply.
 This is easily achieved in the prototype since the LED is powered directly from the controller board.
 However, in the optic of using light bulbs powered from AC mains, the controller layer would need to act differently.
 Different switching mechanisms have been tried, and by far the most performant resulted to be a Solid State Relay switcher, or SSR for short.
 A SSR has the power to close or open the circuit connected to the AC source. With a small activation signal it can allow the current to flow through or stop it.
 The activation signal can easily be sent from the controller board.
+Figure \ref{fig:ssrwiring} shows the wiring between the solid state relay and the Arduino board.
 However, the use of a SSR brings additional limitations to the system, especially on possible speed achievable in transmission.
-Although faster than other types of relays, SSRs still have some limitations, like in the activation speed. 
-Fast switching at a rate faster than the activation time of the relay will have no effect, and switching at a rate that is only slightly slower will allow only a limited amount of current through before switching off, as the experiments suggest. \todo{experiments ssr}
-\todo{graph of ssr speed (real/bigLED/test1)}
-\todo{wiring with ssr diagram}
+Although faster than other types of relays, SSRs still have some limitations, especially in the activation speed. 
+Fast switching at a rate faster than the activation time of the relay will have no effect, and switching at a rate that is only slightly slower will allow only a limited amount of current through before switching off.
+As the experiments suggest, the results of which shown in fig. \ref{fig:ssrwarmup}, the solid state relay is not able to convey enough current to the light bulb in less than 9 ms.
+As a result, the light bulb remains switched off.
+Even though the maximum brightness achieved is several times more than with the low power LED, the rate at which the LED can be controlled and modulated poses a serious limitation on the potential transmission.
+In addition to this, the LED bulb has a cool down period that is far longer than the one with the low power LED, and the system would still need to implement some rectification on the current to avoid the fluctuations due to the phases of alternating current.
+For all these reasons, the preferred prototype setup to achieve communication will be exclusively the one with the low power LED and direct control from the board.
+Although more localised, the setup obtains higher rates of transmission, is potentially embeddable as a transceiver on a small robotic agent connected to a battery, and can achieve local communication that can be exploited in some common mobile robotics scenarios.
+On the other hand, the LED bulb would have worked exclusively as an environmental transmitter, to communicate to robots externally.
+
+\begin{figure}[hbt]
+\centering
+  \includegraphics[height=180px]{img/ssr}
+  \caption{Speed of solid state relay and light bulb setup.}
+  \label{fig:ssrwarmup}
+\end{figure}
+
+\begin{figure}[hbt]
+\centering
+  \includegraphics[height=150px]{img/ssr_schem}
+  \caption{Wiring of the Arduino board with a solid state relay to control AC powered LED.}
+  \label{fig:ssrwiring}
+\end{figure}
