@@ -1,19 +1,20 @@
 \section{Control layer}
 
-\todo{what requirements?}
-
 %layer overview
 This layer is responsible of connecting the physical and the logical layers of the system, connecting the physical variations that produce the signal with the logical information they carry.
-For a transmitter this translates to the process of producing variations of the physical properties in a structured way according to what dictated by the logical layer, in a way that these variations reflect the information given.
+For a transmitter this translates to the process of producing the physical variations that constitute the signal in a structured way, according to what instructed by the logical layer.
+The signal needs to be modulated in a way that it will univocally reflect the information given.
 For the receiver, the control layer is responsible of reading the values from the sensory layer and forward them to the logical layer, perform filtering and other minor operations.
 In the prototyped system, this layer is physically represented by micro controller boards connected with a terminal through a serial connection on one side, and with the components of the physical layer on the other.
 This layer is crucial for establishing performance of the system in terms of \textbf{rates}, as in how many values can be read from a sensor per time unit for reception, and how fast can a signal be sent to control the light emitter for transmission.
+The goal for the performance to achieve in this level is to obtain a transmission rate that is not noticeable or annoying to human observers.
+Research place such a rate at about 65 Hz for uniform light sources, although for non uniform sources it can reach about 500 Hz before it becomes unnoticeable \cite{eye}.
 
 %serial connection
 \subsection{Connection to the logical layer}
-Being in the middle of the system, this layer has two connections, one outgoing and one incoming.
+Being in the middle of the system, this layer has two connections, figurative or literal: one outgoing and one incoming.
 The transmitter will have an incoming connection with the logical layer and one outgoing to the physical, while the receiver will have an outgoing connection to the logical layer and one incoming from the physical layer.
-Since this layer is the one that produces transmission and reception rates, it's worthwhile to spend some time in analysing both types of connections, because the sum of both will result in the overall performance of this layer.
+Since this layer is the one that produces transmission and reception rates, it's worthwhile to spend some time in analysing both types of connections, because both will contribute to the overall performance of this layer.
 Transmission rate, as will be discussed, depends on the speed of the outgoing connection from control layer to the physical layer for obvious reasons.
 However, the speed of the incoming connection from the logical layer would also play a role.
 The same discussion applies for the reception rates, in reverse.
@@ -23,7 +24,7 @@ Both boards are Arduinos, and handle the serial connection in the same way.
 There are a few aspects to consider when implementing the link between control layer and logical layer, from the logical layer point of view.
 One aspect to consider is that the serial buffer has a limited size of 64 bytes in most Arduino boards, so it's important to keep the serial communication as light as possible to avoid overflow and loss of information.
 This means that if the message that needs to pass through is encoded as a string, it would need to be sent one character at a time and avoid unnecessary additional information.
-In most cases, it's possible to encode a single character into one single 8-bits byte, but not all the programming languages implement this automatically.
+In most cases, it's possible to encode a single character into one single 8-bits byte for the ASCII and UTF-8 charsets, but not all the programming languages implement this automatically.
 The system prototyped in this case was implemented using Python 2.7, which uses dynamic types and therefore doesn't have a specific type for \textit{chars}. 
 In Python, strings are objects with an overhead of 37 bytes, plus one byte for every character in the string.
 This would result in a very heavy serial transmission for just a few characters. Characters need to be converted in single bytes before sending them. 
@@ -51,18 +52,25 @@ To achieve this level of accuracy in the conversion, the ADC requires more time 
 \subsection{Transmission rates}
 The transmission process takes as input a message that needs to be converted into Manchester code (see \ref{modulschemes}).
 Just like pure binary, Manchester encoding only has two symbols, 1s and 0s.
-A symbol, in telecommunication, represents the smallest amount of data that can be sent in form of an analog signal. The symbol rate (symbols per time unit) is measured in baud.
-Each pair of symbols in Manchester represent a single binary bit. 
-Given the limitations for the reception side, it's in practice very difficult to measure transmission rates above 1000 Hz in the prototype system.
-The reception rate imposes a first limitation on the transmission rate, since transmission faster than reception would be extremely faulty.
+%A symbol, in telecommunication, represents the smallest amount of data that can be sent in form of an analog signal. The symbol rate (symbols per time unit) is measured in baud.
+A single bit of digital information is formed by a pair of symbols in Manchester encoding, a 01 representing a binary 1 and 10 a binary 0. 
+Given the limitations for the reception side, it's in practice very difficult to measure transmission rates above 1000 Hz in the prototype system, since reception and transmission happen asynchronously.
+The reception rate imposes a first limitation on the transmission rate, since transmission faster than reception would produce faulty communication.
 A second limitation is introduced by the physical speed of the LED used.
-From the measurements of warmup times of the LED presented in section \ref{physical}, it's possible to see what amount of variations are achievable in 1 ms, which would result in a rate of 1000 Hz.
-In the best case, it's at most a 30\% increase starting from 0 and a 25\% decrease starting from 100, although in average it would be less.
-Along the middle of potential brightness, where transmission is supposed to happen, 1 ms could cause a variation of about 15\% in brightness.
+From the measurements of warmup times of the LED presented in section \ref{physical} and table \ref{tab:warmup}, it's possible to see how signals held for 1 ms would affect the brightness level of the LED.
+%it's possible to see what amount of variations are achievable in 1 ms.
+Signals with duration of 1 ms would result in a rate of 1000 Hz.
+In the best case, 1 ms produces at most a 30\% increase in brightness starting from 0 and a 25\% decrease starting from 100, although in average it would be a smaller variation.
+Along the middle of potential brightness, 1 ms could cause a variation of about 15\% in brightness.
 The control layer is directly responsible for the transmission rate, therefore it needs to guarantee a rate that allows a reliable reception.
-The previous limitations in reception rate and LED speed would suggest that a maximum acceptable rate is of 1000 Hz, with a potential difference between an average 1 and an average 0 of at most 15\% of brightness, and a reception rate that is slightly higher.
-Would this rate produce acceptable readings on the receiver side?\\
-Experimentally it was found that sending signals at 1ms intervals produces a degree of uncertainty of about 30\%, while a 2 ms interval performs much better at 0\% uncertainty.
+\newline
+The previous limitations in reception rate and LED speed would suggest that a maximum acceptable rate is of 1000 Hz for tranmsission.
+With this rate a potential difference between an average 1 and an average 0 in transmission would be of at most 15\% of brightness.
+The rate would be only slightly lower than the reception rate.
+Through experimental evaluation, it was possible to establish whether this rate is reliable for communication, given the restrictions.
+\newline
+%Would this rate produce acceptable readings on the receiver side?\\
+Experimentally it was found that sending signals at 1ms intervals produces a degree of uncertainty of about 30\%, while a 2 ms interval performs much better with 0\% uncertainty.
 More on the experiments and results in section \ref{tr:rate:exp}.
 According to these results, each single symbol is forced to last for 2 ms before the transmitter board can send the next.
 The transmission rate would therefore be at best of 500 bauds in theory, in the case where the activity of the micro controller pays no role.
@@ -81,13 +89,13 @@ Over 30\% of the signals haven't been received.\\
 A second rate of about 500 bps has also been tested to compare with the first one.
 This time the interval between two subsequent signals is of 2 ms.
 Intervals of 3 ms and 4 ms have also been tested.
-Table \ref{ratestable} shows the results of various measurements with the various rates, while fig. \ref{fig:txpeak} shows overlapped samples of the transmissions with the different setups.\\
-As can be seen in the figure, during transmission the brightness achieved from the LED used for testing is not at 100\%, but transmission is still clearly recognised at a level of about 60\%. 
+Table \ref{ratestable} shows the results of various measurements with the various rates, while fig. \ref{fig:txpeak} shows overlapped samples of the transmissions for each of the different setups.\\
+As can be seen in the figure, during transmission the brightness achieved from the LED used for testing is not at 100\%, but variations are still clearly recognised, and the brightness of the LED during transmission averages at about 60\%. 
 In the figure, the starting and ending points of the transmission are at the minimum and maximum brightness level of the LED, to the far left and far right respectively.\\
 The transmission is always the same over all the instances and in all setups.
-Reception of the same message in different rates happens at different speeds, consistently with the rate difference.
-The x-axis in the figure shows the progression of time receiving the message, and it appears clear that lower rates produce slower receptions.
-Another difference that is clearly noticeable is that the difference between 1s and 0s also varies depending on the time that the signal is forced to stay on.
+Communication of the same message at different rates happens at different speeds, consistently with the rate difference.
+The x-axis in the figure shows the progression of time receiving the message, and it appears clear that lower rates take more time to complete the message.
+Another difference that is clearly noticeable is that the difference between 1s and 0s also varies depending on the time that the signal is held.
 These results suggest that the lower the rate, the more reliable the communication, since broader variations would be more robust to interference and noise.
 However, the rate of 2 ms per signal seems a good candidate to be the final transmission rate in the prototype system with the low power LED, being the fastest reliable rate.
 With a system that uses a different light emitter, or designed to be used at longer distances, different experiments could be necessary.
@@ -149,24 +157,24 @@ Table \ref{tab:2msdistances} shows the results of these experiments.
 Contrarily to section \ref{distancephy}, the percentages of brightness are relative to each separate experiment, in the sense that each experiment has a different level for 100\% of brightness received, depending on the distance.
 For each experiment, a 100\% represents the maximum brightness measured in that experiment.
 This is to shift the focus on the variations and the relation between high signals and low signals, to ultimately verify if even at different overall brightness levels transmission is still comparable.
-Maximum brightness levels are still reported on the table however.
-Two important aspects emerge from these results: one, that reliability remains reasonably high, and two that uncertainty in the average brightness for 1s and 0s grows a lot, probably due to the increasing weight of noise.
+Overall maximum brightness levels are still reported on the table however, for reference.
+Two important aspects emerge from these results: one, that reliability remains reasonably high in the range where the light is visible, and two that uncertainty in the average brightness for 1s and 0s grows a lot, probably due to the increasing weight of noise.
 
 % big light
 \subsection{Controlling AC powered lights}
 As was mentioned, the control layer is supposed to control the switching of the light bulb by directly control its power supply.
 This is easily achieved in the prototype since the LED is powered directly from the controller board.
-However, in the optic of using light bulbs powered from AC mains, the controller layer would need to act differently.
+However, in the optic of using light bulbs powered from AC mains or other external power sources, the controller layer would need to act differently.
 Different switching mechanisms have been tried, and by far the most performant resulted to be a Solid State Relay switcher, or SSR for short.
 A SSR has the power to close or open the circuit connected to the AC source. With a small activation signal it can allow the current to flow through or stop it.
-The activation signal can easily be sent from the controller board.
+The activation signal can be sent from the controller board.
 Figure \ref{fig:ssrwiring} shows the wiring between the solid state relay and the Arduino board.
 However, the use of a SSR brings additional limitations to the system, especially on possible speed achievable in transmission.
 Although faster than other types of relays, SSRs still have some limitations, especially in the activation speed. 
 Fast switching at a rate faster than the activation time of the relay will have no effect, and switching at a rate that is only slightly slower will allow only a limited amount of current through before switching off.
 As the experiments suggest, the results of which shown in fig. \ref{fig:ssrwarmup}, the solid state relay is not able to convey enough current to the light bulb in less than 9 ms.
 As a result, the light bulb remains switched off.
-Even though the maximum brightness achieved is several times more than with the low power LED, the rate at which the LED can be controlled and modulated poses a serious limitation on the potential transmission.
+Even though the maximum brightness achieved is several times more than with the low power LED, the rate at which the LED bulb can be controlled and modulated poses a serious limitation on the potential transmission.
 In addition to this, the LED bulb has a cool down period that is far longer than the one with the low power LED, and the system would still need to implement some rectification on the current to avoid the fluctuations due to the phases of alternating current.
 For all these reasons, the preferred prototype setup to achieve communication will be exclusively the one with the low power LED and direct control from the board.
 Although more localised, the setup obtains higher rates of transmission, is potentially embeddable as a transceiver on a small robotic agent connected to a battery, and can achieve local communication that can be exploited in some common mobile robotics scenarios.

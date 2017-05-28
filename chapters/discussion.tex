@@ -1,8 +1,5 @@
 %[This is some discussion.Here I can link my results to the vision that was presented in the introduction, are the results good enough for some of those applications? Are those scenarios plausible according to my findings? what could be done with my system, more than what has been done? How could one take my work and use it for other purposes, or expand it? how to make it faster? √ ]
 %why not infrared?? VL is user friendly, easily restrained, more local
-
-\todo{how did it go with the requirements?}
-
 After the analysis and evaluation of the prototype system, downsides and potential of visible light communication appear more defined, especially in the context of mobile robotic communication.
 A do-it-yourself system implemented with general purpose hardware by no means achieves the impressive performances documented in research, however it can provide a quick to implement and easy to use form of situated communication.
 Using a low power LED can achieve generic communication locally to the source, although subject to alignment and distance limitations in practical usages.
@@ -11,12 +8,12 @@ Using a low power LED can achieve generic communication locally to the source, a
 \subsection{Downsides}
 The system has some clear downsides in terms of performance, but most of them depend at least partially on hardware and platform characteristics rather than on physical properties of the technology as a whole.
 One major limitation is distance. The use of a low power LED only achieves a few centimetres of transmission range.
-In the specific case that was evaluated, a distance of about 30 cm has been experimentally found to be approximately the maximum distance at which signals can be received.
-However, the direction of the light source can be seen at longer distances, making it possible for mobile devices like robotic agents to approach the light in order to receive messages better.
+In the specific case that was evaluated, a distance of about 30 cm has been experimentally found to be approximately the maximum distance at which signals can be received correctly.
+However, the direction of the light source can be seen at longer distances, making it possible for mobile devices like robotic agents to approach the light source in order to receive messages.
 This limitation is mostly due to the available power, upon which depends the choice of LED to be used in the system.
 The power source directly affects brightness of the LED and hence the range where it is visible.
 High power LEDs are in general also brighter, and can be seen at longer distances.
-Also, the brighter a light is, the less interference will play a role in reception, allowing greater ranges.
+Also, the brighter a light is, the less interference will play a role in reception, allowing greater ranges of communication.
 Research has proven much greater distances achieved with visible light communication, from a few meters to a few kilometres \cite{ronja}.
 Having access to and control of high power sources would make the communication system operate at wide ranges when necessary.
 
@@ -24,7 +21,7 @@ Another important limitation of the system is in the exposure of the sensor to t
 This factor can also depend on the light source.
 The LED used had a limited viewing angle, so any sensor pointing outside of this range would not register accurate variations.
 Light sources with wider viewing angles and higher intensities can be seen even without optimal alignments, and research suggests that when the light source is bright enough, good levels of exposure can be achieved with light reflection from the walls or other surfaces\cite{interferenceVLC}.
-This includes not only angles in two dimensions, but in three. A sensor directly facing the light source but pointing to positions above or below it will be much less effective.
+This includes not only angles in two dimensions, but in three. A sensor directly facing the light source, but pointing to positions above or below it, will be much less effective.
 
 Finally, the speed of the communication that was achieved is very low compared to modern standard communication technologies.
 Like the other limitations, this can also be a hardware dependent factor.
@@ -41,7 +38,7 @@ Whether an application requires long range communication, or local, or perfect a
 Additionally, hardware is not the only factor that can influence the characteristics of the communication.
 Physical boundaries can also be applied to the environment to further restrict and localise the communication, and the signal can be manipulated with the aid of simple optical techniques involving the use of lenses and mirrors, to redirect, spread or concentrate the signal.
 Ultimately, physical characteristics of light such as speed, easy restrain and redirection, absence of electromagnetic interference, are the ones that made the success of fiber optic communication. 
-These same characteristics can be exploited also for wireless communication.
+These same characteristics can be exploited also for wireless communication using light.
 \newline
 Finally, light is a form of situated communication, meaning that in addition to achieving generic communication, a VLC system also allows to determine the relative location of the source of the message.
 This property can be exploited in multiple applications, and is especially useful for swarm robotics for the reason that it allows both local communication and mutual localisation of the agents.
@@ -50,6 +47,13 @@ This property can be exploited in multiple applications, and is especially usefu
 \subsection{Comparing technologies}
 Other forms of communication could achieve the same as visible light.
 Even in the same context of swarm robotics, local, situated and generic communication can be achieved with a \textbf{hybrid system} composed of two components, one component to give direction or identify and localise a source of transmission, and a second one to actually perform the communication.
+%
+%The same effect could be achieved by a system that uses two separate communication subsystems, one reactive and situated, like a coloured light or an infrared sensor, and another generic and local, like could be Bluetooth.
+If two agents have the ability to identify each other through the situated component, generic communication could be exchanged through another wireless channel, like Bluetooth.
+This technique however would present considerable issues in the case where multiple agents are in the same communication range.
+Furthermore, removing entirely the situated component from the system would still allow two agents to communicate and mutually localise each other, through the use of a shared reference system and possibly indoor positioning techniques.
+A visible light communication approach would however reduce complexity and achieve the same result faster, provided that the performance is considered sufficient in the given application.
+
 Also communication with signals in the bands right next to visible light, namely infra red and ultra violet, share similar characteristics with visible light.
 Compared to those, visible light has the advantage, by definition, of being recognised by the human eye.
 This characteristic allows an immediate interaction with humans, that can easily verify if the device is transmitting anything or not, or if the receiver is in line of sight with the source.
@@ -63,9 +67,9 @@ VLC systems can have a wide variety of applications for their characteristics.
 Local communication for mobile robotic agents has been largely discussed.
 The mobility of the agents is a trait that can exploit the localisation of the source, making the robots potentially act on it.
 In general, VLC systems have been already deployed as indoor positioning systems, for multiple reasons.
-Lights indoors are already present in most places, and there is still an open search for the perfect indoor positioning technology, since the GPS does not work indoors.
+Lights indoors are already present in most places, and there is still an open search for the perfect indoor positioning technology, since GPS does not work indoors.
 Smart spaces could also be implemented using visible light, providing localised services in specific places.
-One interesting application of visible light communication would be to exploit street lamps to provide cars with information about possible directions, potentially allowing self driving cars to by "guided" by the street lamps already present on most roads. 
+One interesting application of visible light communication would be to exploit street lamps to provide cars with information about possible directions, potentially allowing self driving cars to by guided by the street lamps already present on most roads. 
 
 %local and situated, good for robots and local communication like swarm robotics.
 %in general, good for indoor positioning, or indoor smart localised services.
@@ -77,13 +81,14 @@ Transmission and \textbf{reception rates} with generic purpose Arduino boards ar
 However, multiple factors have to be taken into account.
 Just focusing on the receiver, even though reading from analog input should in theory be performed as a constant amount of CPU instructions, the analog-to-digital converter (ADC) slows down the clock rate significantly to achieve a good resolution.
 The ADC needs to convert an analog value from a continuous domain in continuous time to a digital value in a discrete domain and discrete time.
-To do this, the ADC samples the analog values at given intervals depending on the sampling rate, and rounds them to the their closest digital value they can reach depending on their precision. 
+To do this, the ADC samples the analog values at given intervals depending on the sampling rate, and rounds them to the closest digital value they can reach depending on their precision. 
 Arduino boards also use a prescaler to reduce the frequency for the ADC clock in order to obtain better resolution in the conversion.
 The AVR ADC of the Arduino board has a recommended clock speed of between 50 kHz and 200 kHz when 10 bit resolution is desired, according to the producers \cite{atmel}, above this rates the resolution starts to degrade.
-To achieve the lower clock speed, the original clock rate of 16 MHz needs to be scaled down by integer division with a prescaler value.
-Prescaler values of 2, 4, 8, 16, 32, 64 and 128 are provided. 
+To achieve the lower clock speed, the original clock rate of 16 MHz needs to be scaled down by integer division with a prescale value.
+Prescale values of 2, 4, 8, 16, 32, 64 and 128 are provided. 
 This means that the prescale will be set to 128 for analog reads in Arduino, making the new rate 16 MHz / 128 = 125 kHz, since a prescale of 64 still produces a rate that is too fast (250 kHz).
-On top of that, a normal conversion in the ADC takes 13 ADC clock cycles.
+On top of that, a normal conversion in the ADC takes 13 ADC clock cycles, still according to the producers.
+
 The hardware limit for the sample rate of analog input will therefore become 125 kHz / 13 = 9600 Hz.
 There are several ways to speed up this process though, one could be to change the core clock down to 12 MHz. 
 After prescaling and performing the 13 instructions, the limitation of the sample rate would become 12 MHz / 64 / 13 = 14 kHz, because a prescale factor of 64 would be enough in this case.
@@ -112,4 +117,4 @@ Another application of a small embedded VLC transceiver could be in multi robot 
 When getting close, robots could exchange information about their knowledge of the explored surroundings.
 Environmental transmitters could also be developed as a continuation of the work carried on so far.
 Lamps placed in one room could transmit to robots present in the room, establishing environment to robot communication.
- Perhaps robots could be provided with aid for navigation or instructions to follow.
+ Perhaps robots could be provided with aid for navigation or instructions to follow in this case.

@@ -63,6 +63,9 @@ Fig. \ref{fig:sys over} shows an overview of the prototype's architecture.
 Transmission starts from a terminal, where a user can input messages as strings. These are then encapsulated into Protocol Data Units (PDUs) and sent to a micro controller through a serial connection.
 In this case, the micro controller that was used for transmission is an Arduino board.
 The board encodes the received bytes into Manchester Code, and then controls the light signal by switching on and off the emitter accordingly.
+The Manchester encoding allows the light emitter to always produce some base illumination regardless of the data sent. 
+If the message to be sent in binary consisted of a long sequence of binary 0s, a pure binary encoding would result in the light being turned off for the entire time.
+Instead, Manchester encoding constantly alternates the symbols, employing in average the same amount of states with light on and states with light off.
 A light emitting diode is the furthest end of the transmitter module.
 For this part, multiple setups have been tried.
 The fastest emitter that has been tested is a single low power bright LED connected to the board and powered directly by it, which allows very fast switching.
